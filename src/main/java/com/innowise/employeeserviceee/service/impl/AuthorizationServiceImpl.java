@@ -3,16 +3,14 @@ package com.innowise.employeeserviceee.service.impl;
 
 import com.innowise.employeeserviceee.entity.User;
 import com.innowise.employeeserviceee.repository.UserRepository;
+import com.innowise.employeeserviceee.repository.impl.UserRepositoryImpl;
 import com.innowise.employeeserviceee.service.AuthorizationService;
 import jakarta.ejb.Stateless;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Objects;
 
 @Stateless
 @NoArgsConstructor

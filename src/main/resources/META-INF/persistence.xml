@@ -3,51 +3,18 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
              version="3.0">
-<!--    <persistence-unit name="default">-->
-<!--        <properties>-->
-<!--            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/my_db?useSSL=false"/>-->
-<!--            <property name="javax.persistence.jdbc.user" value="bestuser"/>-->
-<!--            <property name="javax.persistence.jdbc.password" value="bestuser"/>-->
-<!--            <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>-->
-<!--        </properties>-->
-<!--    </persistence-unit>-->
-<!--    <persistence-unit name="com.innowise.employeeserviceee.repository">-->
-<!--        <description>Hibernate EntityManager</description>-->
-<!--        <exclude-unlisted-classes>true</exclude-unlisted-classes>-->
-<!--        <properties>-->
-<!--            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>-->
-<!--            <property name="hibernate.hbm2ddl.auto" value="update"/>-->
-<!--            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>-->
-<!--            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/my_db?useSSL=false"/>-->
-<!--            <property name="javax.persistence.jdbc.user" value="bestuser"/>-->
-<!--            <property name="javax.persistence.jdbc.password" value="bestuser"/>-->
-<!--        </properties>-->
-<!--        <class>com.innowise.employeeserviceee.entity.Employee</class>-->
-<!--        <class>com.innowise.employeeserviceee.entity.Department</class>-->
-<!--        <class>com.innowise.employeeserviceee.entity.Authority</class>-->
-<!--        <class>com.innowise.employeeserviceee.entity.User</class>-->
-<!--    </persistence-unit>-->
-<!--    <persistence-unit name="EmployeeServicePersistenceProvider">-->
-<!--        <jta-data-source>jdbc/my_db</jta-data-source>-->
-<!--        <properties>-->
-<!--            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>-->
-<!--            <property name="hibernate.hbm2ddl.auto" value="update"/>-->
-<!--            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>-->
-<!--            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/my_db?useSSL=false"/>-->
-<!--            <property name="javax.persistence.jdbc.user" value="bestuser"/>-->
-<!--            <property name="javax.persistence.jdbc.password" value="bestuser"/>-->
-<!--        </properties>-->
-<!--    </persistence-unit>-->
-    <persistence-unit name="EmployeeServicePersistenceProvider" transaction-type="RESOURCE_LOCAL">
+
+    <persistence-unit name="EmployeeServicePersistenceProvider" transaction-type="JTA">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <jta-data-source>jdbc/my_db</jta-data-source>
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
 
         <properties>
-            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/my_db?useSSL=false"/>
-            <property name="javax.persistence.jdbc.user" value="bestuser"/>
-            <property name="javax.persistence.jdbc.password" value="bestuser"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+            <property name="hibernate.connection.password" value="bestuser"/>
+            <property name="hibernate.connection.username" value="bestuser"/>
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/my_db?useSSL=false"/>
             <property name="hibernate.show_sql" value="true" />
-
         </properties>
     </persistence-unit>
 </persistence>

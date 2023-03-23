@@ -3,7 +3,7 @@ package com.innowise.employeeserviceee.dto.converter;
 
 import com.innowise.employeeserviceee.dto.UserDTO;
 import com.innowise.employeeserviceee.entity.User;
-import com.innowise.employeeserviceee.repository.AuthorityRepository;
+import com.innowise.employeeserviceee.repository.impl.AuthorityRepositoryImpl;
 import jakarta.ejb.Singleton;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -15,7 +15,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class UserConverter {
 
-    private AuthorityRepository authorityRepository;
+    private AuthorityRepositoryImpl authorityRepository;
 
     public User toEntity(UserDTO userDTO) {
         User user = User.builder()

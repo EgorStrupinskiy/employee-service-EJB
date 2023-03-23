@@ -1,35 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="employee-service-EE:war exploded" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a0a0946-c7a4-477c-8617-b046f274fa0d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/ControllerServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/repository/impl/AuthorityRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/repository/impl/DepartmentRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/repository/impl/EmployeeRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/repository/impl/UserRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/resources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/HelloApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/HelloResource.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/controller/ControllerServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/ControllerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/ControllerServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/dto/converter/DepartmentConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/dto/converter/DepartmentConverter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/dto/converter/EmployeeConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/dto/converter/EmployeeConverter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/dto/converter/UserConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/dto/converter/UserConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/model/RegistrationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/model/RegistrationRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/entity/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/entity/Employee.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/repository/AuthorityRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/repository/AuthorityRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/repository/DepartmentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/repository/DepartmentRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/repository/EmployeeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/repository/EmployeeRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/service/AuthorizationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/service/AuthorizationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/service/DepartmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/service/DepartmentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/service/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/service/EmployeeService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/service/impl/AuthorizationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/service/impl/AuthorizationServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/service/impl/DepartmentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/service/impl/DepartmentServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/service/impl/EmployeeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/service/impl/EmployeeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/beans.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/beans.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -45,6 +72,9 @@
     </option>
   </component>
   <component name="ProjectId" id="2NPLVQfIO3DZ4igv9T4vQJSgsWZ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
@@ -52,6 +82,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "jdk.selected.JAVA_MODULE": "openjdk-18",
     "last_opened_file_path": "D:/Innowise/proj3/employee-service-EE",
@@ -59,12 +90,24 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
+    "project.structure.side.proportion": "0.57931036",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mongo",
+      "mysql"
+    ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.innowise.employeeserviceee.repository" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="TomEE 10.0.27" type="TomeeConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="TomEE 10.0.27" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="OPEN_IN_BROWSER" value="false" />
@@ -165,6 +208,8 @@
       <option name="presentableId" value="Default" />
       <updated>1679560794980</updated>
       <workItem from="1679560796124" duration="735000" />
+      <workItem from="1679569414710" duration="4532000" />
+      <workItem from="1679575919958" duration="2808000" />
     </task>
     <servers />
   </component>

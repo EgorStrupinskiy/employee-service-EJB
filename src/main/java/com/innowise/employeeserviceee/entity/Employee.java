@@ -12,8 +12,8 @@ import org.hibernate.annotations.Cascade;
 @Table(name = "employees")
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 @Builder
+@Data
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

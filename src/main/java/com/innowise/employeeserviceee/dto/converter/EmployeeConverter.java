@@ -5,7 +5,7 @@ package com.innowise.employeeserviceee.dto.converter;
 import com.innowise.employeeserviceee.dto.EmployeeDTO;
 import com.innowise.employeeserviceee.entity.Department;
 import com.innowise.employeeserviceee.entity.Employee;
-import com.innowise.employeeserviceee.repository.DepartmentRepository;
+import com.innowise.employeeserviceee.repository.impl.DepartmentRepositoryImpl;
 import jakarta.ejb.Singleton;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -17,7 +17,7 @@ import java.util.Optional;
 @NoArgsConstructor
 public class EmployeeConverter {
 
-    private DepartmentRepository departmentRepository;
+    private DepartmentRepositoryImpl departmentRepository;
 
     public Employee toEntity(EmployeeDTO employeeDTO) {
         Employee employee = Employee.builder()

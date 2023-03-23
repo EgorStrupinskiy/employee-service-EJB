@@ -1,41 +1,17 @@
 package com.innowise.employeeserviceee.repository;
 
 import com.innowise.employeeserviceee.entity.Employee;
-import jakarta.ejb.Singleton;
-import jakarta.ejb.Stateless;
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import jakarta.ejb.Local;
 
 import java.util.List;
 
-@Stateless
-public class EmployeeRepository {
-    @PersistenceContext(unitName = "EmployeeServicePersistenceProvider")
-    private EntityManager entityManager;
+@Local
+public interface EmployeeRepository {
+    List<Employee> findAll();
 
-    public List<Employee> findAll() {
-        Query query = entityManager.createQuery("SELECT e FROM Employee e", Employee.class);
-        return (query.getResultList());
-//        TypedQuery<Employee> namedQuery = entityManager.createNamedQuery("Employee.getAll", Employee.class);
-//        return namedQuery.getResultList();
-    }
+    Employee save(Employee employee);
 
-    public Employee save(Employee employee) {
-        Employee newEmployee = entityManager.merge(employee);
-        employee.setId(newEmployee.getId());
-        return newEmployee;
-    }
+    Employee findById(Long id);
 
-    public Employee findById(Long id) {
-        Employee employee = entityManager.find(Employee.class, id);
-        return employee;
-    }
-
-    public void deleteById(Long id) {
-        Query query = entityManager.createQuery("delete from Employee " +
-                "where id =:employeeId");
-        query.setParameter("employeeId", id);
-        query.executeUpdate();
-    }
+    void deleteById(Long id);
 }

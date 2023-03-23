@@ -4,15 +4,14 @@ package com.innowise.employeeserviceee.service.impl;
 import com.innowise.employeeserviceee.dto.EmployeeDTO;
 import com.innowise.employeeserviceee.dto.converter.EmployeeConverter;
 import com.innowise.employeeserviceee.entity.Employee;
-import com.innowise.employeeserviceee.exception.NoSuchRecordException;
 import com.innowise.employeeserviceee.repository.EmployeeRepository;
+import com.innowise.employeeserviceee.repository.impl.EmployeeRepositoryImpl;
 import com.innowise.employeeserviceee.service.EmployeeService;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 import java.util.stream.Collectors;

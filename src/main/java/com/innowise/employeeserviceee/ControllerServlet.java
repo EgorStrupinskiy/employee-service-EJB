@@ -21,8 +21,6 @@ import java.sql.DriverManager;
 import java.util.List;
 
 @WebServlet("/employees")
-@AllArgsConstructor
-@NoArgsConstructor
 public class ControllerServlet extends HttpServlet {
     @EJB
     private EmployeeService employeeService;
