@@ -10,16 +10,21 @@ import com.innowise.employeeserviceee.service.EmployeeService;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
 import jakarta.transaction.Transactional;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Stateless
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 public class EmployeeServiceImpl implements EmployeeService {
-    private final EmployeeRepository employeeRepository;
-    private final EmployeeConverter converter;
+    @EJB
+    private EmployeeRepository employeeRepository;
+    @EJB
+    private EmployeeConverter converter;
 
     @Transactional
     @Override

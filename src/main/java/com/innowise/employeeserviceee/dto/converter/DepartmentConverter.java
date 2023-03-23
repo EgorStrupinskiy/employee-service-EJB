@@ -2,18 +2,19 @@ package com.innowise.employeeserviceee.dto.converter;
 
 import com.innowise.employeeserviceee.dto.DepartmentDTO;
 import com.innowise.employeeserviceee.entity.Department;
-import com.innowise.employeeserviceee.exception.NoSuchRecordException;
 import com.innowise.employeeserviceee.repository.EmployeeRepository;
 import jakarta.ejb.Singleton;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import java.util.Optional;
 
 @Singleton
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 public class DepartmentConverter {
 
-    private final EmployeeRepository employeeRepository;
+    private EmployeeRepository employeeRepository;
 
     public Department toEntity(DepartmentDTO departmentDTO) {
         Department department = Department.builder()

@@ -9,16 +9,19 @@ import com.innowise.employeeserviceee.repository.DepartmentRepository;
 import com.innowise.employeeserviceee.service.DepartmentService;
 import jakarta.ejb.Stateless;
 import jakarta.transaction.Transactional;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Stateless
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 public class DepartmentServiceImpl implements DepartmentService {
-    private final DepartmentRepository departmentRepository;
-    private final DepartmentConverter converter;
+    private DepartmentRepository departmentRepository;
+    private DepartmentConverter converter;
 
 
 
@@ -38,19 +41,20 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     public DepartmentDTO findById(Long id) {
         Department department = departmentRepository.findById(id)
-                .orElseThrow(() ->
-                        new NoSuchRecordException(String.format("Department with id=%s not found", id))
-                );
+//                .orElseThrow(() ->
+//                        new NoSuchRecordException(String.format("Department with id=%s not found", id))
+//                )
+                ;
         return converter.toDTO(department);
     }
 
     @Override
     @Transactional
     public void deleteById(Long id) {
-        if (!departmentRepository.existsById(id)) {
-            throw new NoSuchRecordException
-                    (String.format("Department with id=%s not found for deleting", id));
-        }
+//        if (!departmentRepository.existsById(id)) {
+//            throw new NoSuchRecordException
+//                    (String.format("Department with id=%s not found for deleting", id));
+//        }
         departmentRepository.deleteById(id);
     }
 }

@@ -5,20 +5,19 @@ package com.innowise.employeeserviceee.dto.converter;
 import com.innowise.employeeserviceee.dto.EmployeeDTO;
 import com.innowise.employeeserviceee.entity.Department;
 import com.innowise.employeeserviceee.entity.Employee;
-import com.innowise.employeeserviceee.exception.NoSuchRecordException;
 import com.innowise.employeeserviceee.repository.DepartmentRepository;
-import jakarta.ejb.EJB;
 import jakarta.ejb.Singleton;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import java.util.Optional;
 
 @Singleton
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 public class EmployeeConverter {
 
-    private final DepartmentRepository departmentRepository;
-
+    private DepartmentRepository departmentRepository;
 
     public Employee toEntity(EmployeeDTO employeeDTO) {
         Employee employee = Employee.builder()
@@ -31,9 +30,10 @@ public class EmployeeConverter {
         Optional.ofNullable(employeeDTO.getDepartmentId())
                 .ifPresent(id -> {
                     Department department = departmentRepository.findById(employeeDTO.getDepartmentId())
-                            .orElseThrow(() -> new NoSuchRecordException
-                                    (String.format("Department with id=%s not found", employeeDTO.getDepartmentId()))
-                            );
+//                            .orElseThrow(() -> new NoSuchRecordException
+//                                    (String.format("Department with id=%s not found", employeeDTO.getDepartmentId()))
+//                            )
+                            ;
                     employee.setDepartment(department);
                 });
 
@@ -46,9 +46,10 @@ public class EmployeeConverter {
         employee.setSalary(employeeDTO.getSalary());
         if (employeeDTO.getDepartmentId() != null) {
             Department department = departmentRepository.findById(employeeDTO.getDepartmentId())
-                    .orElseThrow(() -> new NoSuchRecordException
-                            (String.format("Department with id=%s not found", employeeDTO.getDepartmentId()))
-                    );
+//                    .orElseThrow(() -> new NoSuchRecordException
+//                            (String.format("Department with id=%s not found", employeeDTO.getDepartmentId()))
+//                    )
+                    ;
             employee.setDepartment(department);
         } else {
             employee.setDepartment(null);

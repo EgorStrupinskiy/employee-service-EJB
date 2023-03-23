@@ -6,6 +6,8 @@ import com.innowise.employeeserviceee.repository.UserRepository;
 import com.innowise.employeeserviceee.service.AuthorizationService;
 import jakarta.ejb.Stateless;
 import jakarta.transaction.Transactional;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 import java.util.HashSet;
@@ -13,11 +15,12 @@ import java.util.List;
 import java.util.Objects;
 
 @Stateless
-@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 public class AuthorizationServiceImpl implements AuthorizationService {
-    private final UserRepository userRepository;
+    private UserRepository userRepository;
 
-    @Transactional
+//    @Transactional
 
 //    @Override
 //    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

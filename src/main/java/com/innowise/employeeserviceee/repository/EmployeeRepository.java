@@ -1,19 +1,24 @@
 package com.innowise.employeeserviceee.repository;
 
 import com.innowise.employeeserviceee.entity.Employee;
+import jakarta.ejb.Singleton;
 import jakarta.ejb.Stateless;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.Query;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Stateless
 public class EmployeeRepository {
+    @PersistenceContext(unitName = "EmployeeServicePersistenceProvider")
     private EntityManager entityManager;
 
     public List<Employee> findAll() {
-        Query query = entityManager.createQuery("from Employee", Employee.class);
+        Query query = entityManager.createQuery("SELECT e FROM Employee e", Employee.class);
         return (query.getResultList());
+//        TypedQuery<Employee> namedQuery = entityManager.createNamedQuery("Employee.getAll", Employee.class);
+//        return namedQuery.getResultList();
     }
 
     public Employee save(Employee employee) {

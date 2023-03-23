@@ -1,6 +1,7 @@
 package com.innowise.employeeserviceee.model;
 
-import com.strupinski.employeeservice.dto.UserDTO;
+
+import com.innowise.employeeserviceee.dto.UserDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
