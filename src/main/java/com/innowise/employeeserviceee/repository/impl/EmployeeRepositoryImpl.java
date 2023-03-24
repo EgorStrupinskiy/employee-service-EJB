@@ -6,13 +6,16 @@ import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
+import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Stateless
 @NoArgsConstructor
+@AllArgsConstructor
 public class EmployeeRepositoryImpl implements EmployeeRepository {
 
     @PersistenceContext(unitName = "EmployeeServicePersistenceProvider")
@@ -21,10 +24,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     @Override
     @Transactional
     public List<Employee> findAll() {
-//        Query query = entityManager.createQuery("from Employee", Employee.class);
-//        TypedQuery<Employee> query = entityManager.createQuery("from Employee", Employee.class);
-//        return (query.getResultList());
-        Query query = entityManager.createQuery("SELECT e FROM Employee e");
+        TypedQuery<Employee> query = entityManager.createQuery("from Employee", Employee.class);
         return query.getResultList();
     }
 

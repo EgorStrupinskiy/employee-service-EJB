@@ -16,6 +16,6 @@ public class Authority {
 
     private String name;
 
-    @OneToMany(mappedBy = "authority")
+    @OneToMany(mappedBy = "authority", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private List<User> users;
 }

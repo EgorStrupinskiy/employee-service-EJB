@@ -2,18 +2,19 @@ package com.innowise.employeeserviceee.service;
 
 
 
+import com.innowise.employeeserviceee.dto.UserDTO;
 import com.innowise.employeeserviceee.entity.User;
 import jakarta.ejb.Local;
 
 import java.util.List;
 
 @Local
-public interface AuthorizationService {
+public interface UserService {
 //    UserDetails loadUserByUsername(String username);
-    User addUser(User user);
+    UserDTO addUser(UserDTO user);
 
     void deleteById(Long id);
-    List<User> findAll();
+    List<UserDTO> findAll();
 
-    User findByUsername(String username);
+    UserDTO findByUsername(String username);
 }

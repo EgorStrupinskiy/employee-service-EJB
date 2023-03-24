@@ -6,6 +6,7 @@ import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -19,9 +20,12 @@ public class UserRepositoryImpl implements UserRepository {
     private EntityManager entityManager;
 
     @Override
+    @Transactional
     public List<User> findAll() {
         Query query = entityManager.createQuery("from User", User.class);
-        return (query.getResultList());
+        List<User> allUsers = query.getResultList();
+        System.out.println(allUsers);
+        return allUsers;
     }
 
     @Override
@@ -43,5 +47,11 @@ public class UserRepositoryImpl implements UserRepository {
                 "where id =:userId");
         query.setParameter("userId", id);
         query.executeUpdate();
+    }
+
+    @Override
+    public User findByUsername(String username) {
+        Query query = entityManager.createQuery("SELECT u FROM User u WHERE u.username = :username");
+        return (User) query.getSingleResult();
     }
 }

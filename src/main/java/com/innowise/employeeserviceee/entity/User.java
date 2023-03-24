@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
 
 @Data
 @Table(name = "users")
@@ -23,8 +24,9 @@ public class User {
 
     private String password;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "authority_id")
+    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
     private Authority authority;
 
     public String getAuthorityName() {

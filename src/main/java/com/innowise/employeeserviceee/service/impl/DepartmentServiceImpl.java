@@ -7,6 +7,7 @@ import com.innowise.employeeserviceee.entity.Department;
 import com.innowise.employeeserviceee.repository.DepartmentRepository;
 import com.innowise.employeeserviceee.repository.impl.DepartmentRepositoryImpl;
 import com.innowise.employeeserviceee.service.DepartmentService;
+import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
@@ -19,7 +20,9 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DepartmentServiceImpl implements DepartmentService {
+    @EJB
     private DepartmentRepository departmentRepository;
+    @EJB
     private DepartmentConverter converter;
 
 
