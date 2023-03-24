@@ -10,7 +10,7 @@ import java.util.List;
 public interface DepartmentService {
     DepartmentDTO saveDepartment(DepartmentDTO department);
 
-    List<DepartmentDTO> getAll();
+    List<DepartmentDTO> findAll();
 
     DepartmentDTO findById(Long id);
 

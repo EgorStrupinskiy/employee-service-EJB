@@ -2,8 +2,10 @@ package com.innowise.employeeserviceee.dto.converter;
 
 
 import com.innowise.employeeserviceee.dto.UserDTO;
+import com.innowise.employeeserviceee.entity.Authority;
 import com.innowise.employeeserviceee.entity.User;
 import com.innowise.employeeserviceee.repository.impl.AuthorityRepositoryImpl;
+import jakarta.ejb.EJB;
 import jakarta.ejb.Singleton;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -15,6 +17,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class UserConverter {
 
+    @EJB
     private AuthorityRepositoryImpl authorityRepository;
 
     public User toEntity(UserDTO userDTO) {
@@ -24,11 +27,11 @@ public class UserConverter {
                 .password(userDTO.getPassword())
                 .build();
 
-//        Optional.ofNullable(userDTO.getAuthority())
-//                .ifPresent(id -> {
-//                    Authority au = authorityRepository.findByName(userDTO.getAuthority());
-//                    user.setAuthority(au);
-//                });
+        Optional.ofNullable(userDTO.getAuthority())
+                .ifPresent(id -> {
+                    Authority au = authorityRepository.findByName(userDTO.getAuthority());
+                    user.setAuthority(au);
+                });
 
         return user;
     }

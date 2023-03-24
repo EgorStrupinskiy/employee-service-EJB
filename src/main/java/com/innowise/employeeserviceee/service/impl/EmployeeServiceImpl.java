@@ -27,7 +27,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     @Transactional
-    public List<EmployeeDTO> getAllEmployees() {
+    public List<EmployeeDTO> findAll() {
         return employeeRepository.findAll().stream().map(converter::toDTO).collect(Collectors.toList());
 //        return employeeRepository.findAll().stream().map(EmployeeMapper.INSTANCE::toDto)
 //                .collect(Collectors.toList());

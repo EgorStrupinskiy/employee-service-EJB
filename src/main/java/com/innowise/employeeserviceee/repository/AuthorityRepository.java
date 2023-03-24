@@ -2,6 +2,7 @@ package com.innowise.employeeserviceee.repository;
 
 
 import com.innowise.employeeserviceee.entity.Authority;
+import com.innowise.employeeserviceee.entity.User;
 import jakarta.ejb.Local;
 
 import java.util.List;
@@ -15,4 +16,7 @@ public interface AuthorityRepository {
     Authority findById(Long id);
 
     void deleteById(Long id);
+
+    Authority findByName(String username);
+
 }

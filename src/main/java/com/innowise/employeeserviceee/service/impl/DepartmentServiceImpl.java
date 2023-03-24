@@ -33,7 +33,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Transactional
-    public List<DepartmentDTO> getAll() {
+    public List<DepartmentDTO> findAll() {
         return departmentRepository.findAll()
                 .stream()
                 .map(converter::toDTO)

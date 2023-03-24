@@ -2,6 +2,7 @@ package com.innowise.employeeserviceee.repository.impl;
 
 
 import com.innowise.employeeserviceee.entity.Authority;
+import com.innowise.employeeserviceee.entity.User;
 import com.innowise.employeeserviceee.repository.AuthorityRepository;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
@@ -45,4 +46,9 @@ public class AuthorityRepositoryImpl implements AuthorityRepository {
         query.setParameter("authorityId", id);
         query.executeUpdate();
     }
+
+    @Override
+    public Authority findByName(String name) {
+        Query query = entityManager.createQuery("SELECT u FROM Authority u WHERE u.name = :name");
+        return (Authority) query.getSingleResult();    }
 }

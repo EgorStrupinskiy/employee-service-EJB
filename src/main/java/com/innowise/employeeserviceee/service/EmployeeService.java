@@ -8,7 +8,7 @@ import java.util.List;
 
 @Local
 public interface EmployeeService {
-    List<EmployeeDTO> getAllEmployees();
+    List<EmployeeDTO> findAll();
 
     EmployeeDTO saveEmployee(EmployeeDTO employee);
 
