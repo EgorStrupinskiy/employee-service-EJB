@@ -2,19 +2,21 @@ package com.innowise.employeeserviceee.dto.converter;
 
 import com.innowise.employeeserviceee.dto.DepartmentDTO;
 import com.innowise.employeeserviceee.entity.Department;
+import com.innowise.employeeserviceee.repository.EmployeeRepository;
 import com.innowise.employeeserviceee.repository.impl.EmployeeRepositoryImpl;
 import jakarta.ejb.Singleton;
+import jakarta.ejb.Stateless;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import java.util.Optional;
 
-@Singleton
+@Stateless
 @AllArgsConstructor
 @NoArgsConstructor
 public class DepartmentConverter {
 
-    private EmployeeRepositoryImpl employeeRepository;
+    private EmployeeRepository employeeRepository;
 
     public Department toEntity(DepartmentDTO departmentDTO) {
         Department department = Department.builder()

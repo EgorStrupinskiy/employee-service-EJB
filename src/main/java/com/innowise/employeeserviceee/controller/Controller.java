@@ -9,6 +9,7 @@ import com.innowise.employeeserviceee.service.EmployeeService;
 import com.innowise.employeeserviceee.service.UserService;
 import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -19,74 +20,49 @@ import jakarta.ws.rs.core.MediaType;
 import java.io.IOException;
 import java.util.List;
 
+@MultipartConfig
 @WebServlet(name = "Controller", urlPatterns = {"/api/*"})
 public class Controller extends HttpServlet {
-    @EJB
-    private EmployeeService employeeService;
 
     @EJB
-    private DepartmentService departmentService;
+    CommandProvider commandProvider;
 
-    @EJB
-    private UserService authorizationService;
-
-    @Override
-    @Produces(MediaType.APPLICATION_JSON)
-    public void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        String path = request.getPathInfo();
-        System.out.println(path);
-        ObjectMapper mapper = new ObjectMapper();
-        switch (path) {
-            case "/employees":
-                List<EmployeeDTO> allEmployees = employeeService.findAll();
-                response.getWriter().write(mapper.writeValueAsString(allEmployees));
-                break;
-            case "/departments":
-                List<DepartmentDTO> allDepartments = departmentService.findAll();
-                response.getWriter().write(mapper.writeValueAsString(allDepartments));
-                break;
-            case "/users":
-                List<UserDTO> allUsers = authorizationService.findAll();
-                response.getWriter().write(mapper.writeValueAsString(allUsers));
-                break;
-            default:
-                response.sendError(HttpServletResponse.SC_NOT_FOUND);
-                break;
-        }
-    }
-
-//    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-//        processRequest(request, response);
-//    }
-//
-//    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-//        processRequest(request, response);
-//    }
-
-//    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-//        String commandName = request.getParameter(COMMAND);
-//        Optional<Command> command = COMMAND_PROVIDER.getCommand(commandName);
-//        Router router;
-//        try {
-//            router = command.isPresent() ? command.get().execute(request) : new Router(ERROR_404_PAGE, Router.RouterType.ERROR);
-//        } catch (CommandException e) {
-//            router = new Router(ERROR_404_PAGE, Router.RouterType.REDIRECT);
-//        }
-//        switch (router.getRouterType()) {
-//            case REDIRECT:
-//                response.sendRedirect(router.getPagePath());
+//    @Override
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public void doGet(HttpServletRequest request, HttpServletResponse response)
+//            throws ServletException, IOException {
+//        String path = request.getPathInfo();
+//        System.out.println(path);
+//        ObjectMapper mapper = new ObjectMapper();
+//        switch (path) {
+//            case "/employees":
+//                List<EmployeeDTO> allEmployees = employeeService.findAll();
+//                response.getWriter().write(mapper.writeValueAsString(allEmployees));
 //                break;
-//            case FORWARD:
-//                RequestDispatcher dispatcher = request.getRequestDispatcher(router.getPagePath());
-//                dispatcher.forward(request, response);
+//            case "/departments":
+//                List<DepartmentDTO> allDepartments = departmentService.findAll();
+//                response.getWriter().write(mapper.writeValueAsString(allDepartments));
 //                break;
-//            case ERROR:
-//                response.sendRedirect(router.getPagePath());
+//            case "/users":
+//                List<UserDTO> allUsers = authorizationService.findAll();
+//                response.getWriter().write(mapper.writeValueAsString(allUsers));
 //                break;
 //            default:
-//                response.sendRedirect(ERROR_404_PAGE);
+//                response.sendError(HttpServletResponse.SC_NOT_FOUND);
 //                break;
 //        }
 //    }
+
+
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        processRequest(request, response);
+    }
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        processRequest(request, response);
+    }
+
+    private void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        commandProvider.provideCommand(request).execute(request, response);
+    }
 }

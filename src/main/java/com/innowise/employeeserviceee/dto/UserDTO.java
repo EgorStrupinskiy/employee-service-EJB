@@ -17,5 +17,7 @@ public class UserDTO {
 
     private String password;
 
-    private String authority;
+    private Long authorityId;
 }
+
+

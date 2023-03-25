@@ -4,21 +4,23 @@ package com.innowise.employeeserviceee.dto.converter;
 import com.innowise.employeeserviceee.dto.UserDTO;
 import com.innowise.employeeserviceee.entity.Authority;
 import com.innowise.employeeserviceee.entity.User;
+import com.innowise.employeeserviceee.repository.AuthorityRepository;
 import com.innowise.employeeserviceee.repository.impl.AuthorityRepositoryImpl;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Singleton;
+import jakarta.ejb.Stateless;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import java.util.Optional;
 
-@Singleton
+@Stateless
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserConverter {
 
     @EJB
-    private AuthorityRepositoryImpl authorityRepository;
+    private AuthorityRepository authorityRepository;
 
     public User toEntity(UserDTO userDTO) {
         User user = User.builder()
@@ -26,10 +28,9 @@ public class UserConverter {
                 .username(userDTO.getUsername())
                 .password(userDTO.getPassword())
                 .build();
-
-        Optional.ofNullable(userDTO.getAuthority())
+        Optional.ofNullable(userDTO.getAuthorityId())
                 .ifPresent(id -> {
-                    Authority au = authorityRepository.findByName(userDTO.getAuthority());
+                    Authority au = authorityRepository.findById(userDTO.getAuthorityId());
                     user.setAuthority(au);
                 });
 
@@ -44,7 +45,7 @@ public class UserConverter {
                 .build();
         System.out.println(userDTO);
         Optional.ofNullable(user.getAuthority())
-                .ifPresent(authority -> userDTO.setAuthority(authority.getName()));
+                .ifPresent(authority -> userDTO.setAuthorityId(authority.getId()));
 
         return userDTO;
     }

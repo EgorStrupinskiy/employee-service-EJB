@@ -17,13 +17,13 @@ public class RegistrationRequest {
 
     private String password;
 
-    private String authority;
+    private Long authorityId;
 
     public UserDTO toDTO() {
         return UserDTO.builder()
                 .username(username)
                 .password(password)
-                .authority(authority)
+                .authorityId(authorityId)
                 .build();
     }
 }

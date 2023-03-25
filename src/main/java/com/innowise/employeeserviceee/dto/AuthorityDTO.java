@@ -18,12 +18,13 @@ public class AuthorityDTO {
 
     private String name;
 
-    private List<Long> usersIds;
+    private List<UserDTO> users;
 
-    public void addUserId(Long id) {
-        if (usersIds == null) {
-            usersIds = new ArrayList<>();
+    public void addUser(UserDTO user) {
+        if (users == null) {
+            users = new ArrayList<>();
         }
-        usersIds.add(id);
+        users.add(user);
     }
 }
+

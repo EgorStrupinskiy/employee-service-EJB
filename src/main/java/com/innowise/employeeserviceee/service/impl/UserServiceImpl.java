@@ -80,6 +80,8 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
     @EJB
     private UserConverter converter;
+//    @EJB
+//    private UserMapper mapper;
 
 //    @Transactional
 //    @Override

@@ -8,6 +8,7 @@ import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
+import jakarta.persistence.TypedQuery;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -22,8 +23,9 @@ public class AuthorityRepositoryImpl implements AuthorityRepository {
 
     @Override
     public List<Authority> findAll() {
-        Query query = entityManager.createQuery("from Authority", Authority.class);
-        return (query.getResultList());
+        TypedQuery<Authority> query = entityManager.createQuery("from Authority", Authority.class);
+        List<Authority> list = query.getResultList();
+        return list;
     }
 
     @Override

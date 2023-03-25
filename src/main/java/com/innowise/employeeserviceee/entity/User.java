@@ -1,5 +1,6 @@
 package com.innowise.employeeserviceee.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,6 +17,7 @@ import org.hibernate.annotations.Cascade;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "username")
@@ -29,6 +31,7 @@ public class User {
     @JoinColumn(name = "authority_id")
     @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
     private Authority authority;
+
 
     public String getAuthorityName() {
         return this.authority.getName();
