@@ -1,5 +1,6 @@
 package com.innowise.employeeserviceee.repository.impl;
 
+import com.innowise.employeeserviceee.entity.Employee;
 import com.innowise.employeeserviceee.entity.User;
 import com.innowise.employeeserviceee.repository.UserRepository;
 import jakarta.ejb.Stateless;
@@ -30,9 +31,10 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public User save(User user) {
         User newUser = entityManager.merge(user);
-        user.setId(newUser.getId());
+//        newUser.setId(user.getId());
         return newUser;
     }
+
 
     @Override
     public User findById(Long id) {

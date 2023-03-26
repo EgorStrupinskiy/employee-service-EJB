@@ -8,12 +8,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Cascade;
 
-@Data
-@Table(name = "users")
 @Entity
-@Builder
+@Table(name = "users")
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
+@Data
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

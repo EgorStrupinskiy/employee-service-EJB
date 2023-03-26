@@ -9,15 +9,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a0a0946-c7a4-477c-8617-b046f274fa0d" name="Changes" comment="Command Provider implemented">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/controller/impl/DeleteDepartmentCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/controller/impl/DeleteEmployeeCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/controller/impl/DeleteUserCommand.java" afterDir="false" />
+    <list default="true" id="7a0a0946-c7a4-477c-8617-b046f274fa0d" name="Changes" comment="Delete commands implemented">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/controller/CommandProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/controller/CommandProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/controller/impl/WrongCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/controller/impl/WrongCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/controller/impl/AddUserCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/controller/impl/AddUserCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/model/RegistrationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/model/RegistrationRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/repository/impl/UserRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/repository/impl/UserRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,7 +212,7 @@
       <workItem from="1679645431320" duration="4165000" />
       <workItem from="1679654555220" duration="16641000" />
       <workItem from="1679724714307" duration="8786000" />
-      <workItem from="1679825972442" duration="1604000" />
+      <workItem from="1679825972442" duration="7782000" />
     </task>
     <task id="LOCAL-00001" summary="Services and repositories were split into interfaces and implementations">
       <created>1679579308306</created>
@@ -249,7 +249,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679731655011</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Delete commands implemented">
+      <created>1679827743746</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1679827743746</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -261,20 +268,36 @@
     <MESSAGE value="Test employee findAll() method endpoint implemented, everything is working" />
     <MESSAGE value="Some minor changes. Mappers improved" />
     <MESSAGE value="Command Provider implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="Command Provider implemented" />
+    <MESSAGE value="Delete commands implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="Delete commands implemented" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/dto/converter/UserConverter.java</url>
-          <line>25</line>
-          <option name="timeStamp" value="5" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/repository/impl/EmployeeRepositoryImpl.java</url>
+          <line>32</line>
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/controller/CommandProvider.java</url>
-          <line>77</line>
-          <option name="timeStamp" value="6" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/service/impl/UserServiceImpl.java</url>
+          <line>98</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/service/impl/UserServiceImpl.java</url>
+          <line>99</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/service/impl/UserServiceImpl.java</url>
+          <line>100</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/dto/converter/UserConverter.java</url>
+          <line>30</line>
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
