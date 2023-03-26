@@ -24,7 +24,6 @@ public class UserRepositoryImpl implements UserRepository {
     public List<User> findAll() {
         Query query = entityManager.createQuery("from User", User.class);
         List<User> allUsers = query.getResultList();
-//        System.out.println(allUsers);
         return allUsers;
     }
 
