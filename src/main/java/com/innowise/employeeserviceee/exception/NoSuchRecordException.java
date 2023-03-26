@@ -14,6 +14,4 @@ public class NoSuchRecordException extends RuntimeException {
     public NoSuchRecordException(String message, Throwable cause) {
         super(message, cause);
     }
-
-
 }

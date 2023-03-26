@@ -1,9 +1,7 @@
 package com.innowise.employeeserviceee.controller.impl;
 
 import com.innowise.employeeserviceee.controller.Command;
-import com.innowise.employeeserviceee.dto.EmployeeDTO;
 import com.innowise.employeeserviceee.service.EmployeeService;
-import com.innowise.employeeserviceee.util.JsonConverter;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
 import jakarta.servlet.ServletException;

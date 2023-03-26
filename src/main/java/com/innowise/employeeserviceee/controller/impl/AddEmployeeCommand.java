@@ -1,6 +1,5 @@
 package com.innowise.employeeserviceee.controller.impl;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.innowise.employeeserviceee.controller.Command;
 import com.innowise.employeeserviceee.dto.EmployeeDTO;
 import com.innowise.employeeserviceee.service.EmployeeService;
@@ -13,8 +12,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.Data;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
 
 @Data
 @Stateless

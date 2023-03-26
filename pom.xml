@@ -18,13 +18,6 @@
     </properties>
 
     <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>jakarta.enterprise</groupId>-->
-<!--            <artifactId>jakarta.enterprise.cdi-api</artifactId>-->
-<!--            <version>3.0.0</version>-->
-<!--            <scope>provided</scope>-->
-<!--        </dependency>-->
-<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.projectlombok/lombok &ndash;&gt;-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -38,7 +31,6 @@
             <version>4.0.0</version>
             <scope>provided</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/javax.ejb/ejb-api -->
         <dependency>
             <groupId>javax.ejb</groupId>
             <artifactId>ejb-api</artifactId>
@@ -63,7 +55,6 @@
             <artifactId>hibernate-core</artifactId>
             <version>6.0.0.Final</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
@@ -71,13 +62,11 @@
             <type>pom</type>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.mapstruct/mapstruct -->
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
             <version>1.5.3.Final</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
@@ -94,8 +83,6 @@
             <artifactId>jakarta.security.enterprise-api</artifactId>
             <version>3.0.0</version>
         </dependency>
-
-
         <dependency>
             <groupId>org.glassfish.jaxb</groupId>
             <artifactId>jaxb-runtime</artifactId>
@@ -117,6 +104,13 @@
             <artifactId>javax.annotation-api</artifactId>
             <version>1.3.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.mindrot</groupId>
+            <artifactId>jbcrypt</artifactId>
+            <version>0.4</version>
+        </dependency>
+
+
 
     </dependencies>
 

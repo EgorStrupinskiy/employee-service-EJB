@@ -24,7 +24,6 @@ public class FindAllEmployeesCommand implements Command {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         List<EmployeeDTO> allEmployees = employeeService.findAll();
-        ObjectMapper mapper = new ObjectMapper();
         response.getWriter().write(JsonConverter.toJson(allEmployees));
     }
 }

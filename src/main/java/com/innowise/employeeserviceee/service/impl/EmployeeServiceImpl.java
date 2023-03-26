@@ -4,6 +4,8 @@ package com.innowise.employeeserviceee.service.impl;
 import com.innowise.employeeserviceee.dto.EmployeeDTO;
 import com.innowise.employeeserviceee.dto.converter.EmployeeConverter;
 import com.innowise.employeeserviceee.entity.Employee;
+import com.innowise.employeeserviceee.exception.NoSuchRecordException;
+import com.innowise.employeeserviceee.exception.UsernameNotFoundException;
 import com.innowise.employeeserviceee.repository.EmployeeRepository;
 import com.innowise.employeeserviceee.repository.impl.EmployeeRepositoryImpl;
 import com.innowise.employeeserviceee.service.EmployeeService;
@@ -14,6 +16,7 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Stateless
@@ -29,8 +32,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Transactional
     public List<EmployeeDTO> findAll() {
         return employeeRepository.findAll().stream().map(converter::toDTO).collect(Collectors.toList());
-//        return employeeRepository.findAll().stream().map(EmployeeMapper.INSTANCE::toDto)
-//                .collect(Collectors.toList());
+
     }
 
     @Override
@@ -42,9 +44,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     @Transactional
     public EmployeeDTO findById(Long id) {
-        Employee employee = employeeRepository.findById(id)
-//                .orElseThrow(() -> new NoSuchRecordException(String.format("Employee with id=%s not found", id)))
-                ;
+        Employee employee = employeeRepository.findById(id);
+        if (Objects.isNull(employee)) {
+            throw new NoSuchRecordException(String.format("Employee with id=%s not found", id));
+        }
         return converter.toDTO(employee);
     }
 

@@ -57,10 +57,15 @@ package com.innowise.employeeserviceee.service.impl;//package com.innowise.emplo
 //}
 
 
+import com.innowise.employeeserviceee.dto.UserCard;
 import com.innowise.employeeserviceee.dto.UserDTO;
+import com.innowise.employeeserviceee.dto.converter.UserCardConverter;
 import com.innowise.employeeserviceee.dto.converter.UserConverter;
 import com.innowise.employeeserviceee.entity.User;
+import com.innowise.employeeserviceee.exception.AlreadyRegisteredException;
+import com.innowise.employeeserviceee.exception.UsernameNotFoundException;
 import com.innowise.employeeserviceee.repository.UserRepository;
+import com.innowise.employeeserviceee.security.EncryptService;
 import com.innowise.employeeserviceee.service.UserService;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
@@ -77,9 +82,11 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class UserServiceImpl implements UserService {
     @EJB
+    private UserConverter converter;
+    @EJB
     private UserRepository userRepository;
     @EJB
-    private UserConverter converter;
+    private UserCardConverter userCardConverter;
 //    @EJB
 //    private UserMapper mapper;
 
@@ -108,19 +115,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Transactional
-    public List<UserDTO> findAll() {
+    public List<UserCard> findAll() {
         return userRepository.findAll()
                 .stream()
-                .map(converter::toDTO)
+                .map(userCardConverter::toDTO)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public UserDTO findByUsername(String username) {
+    public UserDTO findByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username);
-//        if (Objects.isNull(user)) {
-//            throw new UsernameNotFoundException(String.format("User %s is not found", username));
-//        }
+        if (Objects.isNull(user)) {
+            throw new UsernameNotFoundException(String.format("User %s is not found", username));
+        }
 
         return converter.toDTO(user);
     }

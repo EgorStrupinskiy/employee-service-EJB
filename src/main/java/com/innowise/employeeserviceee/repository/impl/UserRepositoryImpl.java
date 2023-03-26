@@ -7,6 +7,7 @@ import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
+import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -52,7 +53,9 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User findByUsername(String username) {
-        Query query = entityManager.createQuery("SELECT u FROM User u WHERE u.username = :username");
-        return (User) query.getSingleResult();
+        TypedQuery<User> query = entityManager.createQuery("SELECT u FROM User u WHERE u.username = :username", User.class);
+        query.setParameter("username", username);
+        User user = query.getSingleResult();
+        return user;
     }
 }

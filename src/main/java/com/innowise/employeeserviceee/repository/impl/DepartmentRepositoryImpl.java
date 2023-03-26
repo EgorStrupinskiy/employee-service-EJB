@@ -45,4 +45,10 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
         query.setParameter("departmentId", id);
         query.executeUpdate();
     }
+
+    @Override
+    public boolean existsById(Long id) {
+        Department department = entityManager.find(Department.class, id);
+        return department != null;
+    }
 }

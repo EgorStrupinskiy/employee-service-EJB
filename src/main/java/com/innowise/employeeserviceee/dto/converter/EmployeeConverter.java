@@ -4,10 +4,9 @@ package com.innowise.employeeserviceee.dto.converter;
 import com.innowise.employeeserviceee.dto.EmployeeDTO;
 import com.innowise.employeeserviceee.entity.Department;
 import com.innowise.employeeserviceee.entity.Employee;
+import com.innowise.employeeserviceee.exception.NoSuchRecordException;
 import com.innowise.employeeserviceee.repository.DepartmentRepository;
-import com.innowise.employeeserviceee.repository.impl.DepartmentRepositoryImpl;
 import jakarta.ejb.EJB;
-import jakarta.ejb.Singleton;
 import jakarta.ejb.Stateless;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -28,17 +27,13 @@ public class EmployeeConverter {
                 .surname(employeeDTO.getSurname())
                 .salary(employeeDTO.getSalary())
                 .build();
-
         Optional.ofNullable(employeeDTO.getDepartmentId())
                 .ifPresent(id -> {
-                    Department department = departmentRepository.findById(employeeDTO.getDepartmentId())
-//                            .orElseThrow(() -> new NoSuchRecordException
-//                                    (String.format("Department with id=%s not found", employeeDTO.getDepartmentId()))
-//                            )
-                            ;
-                    employee.setDepartment(department);
-                });
-
+                            Department department = Optional.ofNullable(departmentRepository.findById(employeeDTO.getDepartmentId()))
+                                    .orElseThrow(() -> new NoSuchRecordException(String.format(String.format("Department with id=%s not found", id))));
+                            employee.setDepartment(department);
+                        }
+                );
         return employee;
     }
 
@@ -46,16 +41,25 @@ public class EmployeeConverter {
         employee.setName(employeeDTO.getName());
         employee.setSurname(employeeDTO.getSurname());
         employee.setSalary(employeeDTO.getSalary());
-        if (employeeDTO.getDepartmentId() != null) {
-            Department department = departmentRepository.findById(employeeDTO.getDepartmentId())
-//                    .orElseThrow(() -> new NoSuchRecordException
-//                            (String.format("Department with id=%s not found", employeeDTO.getDepartmentId()))
-//                    )
-                    ;
-            employee.setDepartment(department);
-        } else {
-            employee.setDepartment(null);
-        }
+        Optional.ofNullable(employeeDTO.getDepartmentId())
+                .ifPresent(id -> {
+                            Department department = Optional.ofNullable(departmentRepository.findById(employeeDTO.getDepartmentId()))
+                                    .orElseThrow(() -> new NoSuchRecordException(String.format(String.format("Department with id=%s not found", id))));
+                            employee.setDepartment(department);
+                        }
+                );
+//        if (employeeDTO.getDepartmentId() != null) {
+//            Department department = departmentRepository.findById(employeeDTO.getDepartmentId())
+////                    .orElseThrow(() -> new NoSuchRecordException
+////                            (String.format("Department with id=%s not found", employeeDTO.getDepartmentId()))
+////                    )
+//                    ;
+//    } else
+//
+//    {
+//        employee.setDepartment(null);
+//    }
+
     }
 
     public EmployeeDTO toDTO(Employee employee) {

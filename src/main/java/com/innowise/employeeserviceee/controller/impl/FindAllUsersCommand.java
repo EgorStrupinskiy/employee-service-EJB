@@ -2,9 +2,7 @@ package com.innowise.employeeserviceee.controller.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.innowise.employeeserviceee.controller.Command;
-import com.innowise.employeeserviceee.dto.EmployeeDTO;
-import com.innowise.employeeserviceee.dto.UserDTO;
-import com.innowise.employeeserviceee.service.EmployeeService;
+import com.innowise.employeeserviceee.dto.UserCard;
 import com.innowise.employeeserviceee.service.UserService;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
@@ -24,7 +22,7 @@ public class FindAllUsersCommand implements Command {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        List<UserDTO> allUsers = userService.findAll();
+        List<UserCard> allUsers = userService.findAll();
         ObjectMapper mapper = new ObjectMapper();
         response.getWriter().write(mapper.writeValueAsString(allUsers));
     }

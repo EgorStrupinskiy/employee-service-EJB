@@ -1,10 +1,8 @@
 package com.innowise.employeeserviceee.controller.impl;
 
 import com.innowise.employeeserviceee.controller.Command;
-import com.innowise.employeeserviceee.dto.EmployeeDTO;
 import com.innowise.employeeserviceee.dto.UserDTO;
 import com.innowise.employeeserviceee.model.RegistrationRequest;
-import com.innowise.employeeserviceee.service.EmployeeService;
 import com.innowise.employeeserviceee.service.UserService;
 import com.innowise.employeeserviceee.util.JsonConverter;
 import jakarta.ejb.EJB;

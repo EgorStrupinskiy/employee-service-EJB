@@ -10,14 +10,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a0a0946-c7a4-477c-8617-b046f274fa0d" name="Changes" comment="Delete commands implemented">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/dto/UserCard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/dto/converter/UserCardConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/exception/AlreadyRegisteredException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/exception/UsernameNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/security/EncryptService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/controller/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/controller/Command.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/controller/impl/AddDepartmentCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/controller/impl/AddDepartmentCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/controller/impl/AddEmployeeCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/controller/impl/AddEmployeeCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/controller/impl/AddUserCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/controller/impl/AddUserCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/model/RegistrationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/model/RegistrationRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/controller/impl/DeleteDepartmentCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/controller/impl/DeleteDepartmentCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/controller/impl/DeleteEmployeeCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/controller/impl/DeleteEmployeeCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/controller/impl/DeleteUserCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/controller/impl/DeleteUserCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/controller/impl/FindAllDepartmentsCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/controller/impl/FindAllDepartmentsCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/controller/impl/FindAllEmployeesCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/controller/impl/FindAllEmployeesCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/controller/impl/FindAllUsersCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/controller/impl/FindAllUsersCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/controller/impl/WrongCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/controller/impl/WrongCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/dto/converter/DepartmentConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/dto/converter/DepartmentConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/dto/converter/EmployeeConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/dto/converter/EmployeeConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/exception/NoSuchRecordException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/exception/NoSuchRecordException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/repository/DepartmentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/repository/DepartmentRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/repository/impl/DepartmentRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/repository/impl/DepartmentRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/repository/impl/UserRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/repository/impl/UserRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/service/impl/DepartmentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/service/impl/DepartmentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/service/impl/EmployeeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/service/impl/EmployeeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/service/impl/UserServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +83,9 @@
       </MavenImportingSettings>
     </option>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectId" id="2NPLVQfIO3DZ4igv9T4vQJSgsWZ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -95,6 +119,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.innowise.employeeserviceee.exception" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Innowise\projEJB\src\main\java\com\innowise\employeeserviceee\dto\converter" />
     </key>
@@ -102,6 +129,8 @@
       <recent name="D:\Innowise\projEJB\src\main\java\com\innowise\employeeserviceee\controller" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.innowise.employeeserviceee.exception" />
+      <recent name="com.innowise.employeeserviceee.dto" />
       <recent name="com.innowise.employeeserviceee.controller.impl" />
       <recent name="com.innowise.employeeserviceee.repository" />
     </key>
@@ -278,26 +307,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/repository/impl/EmployeeRepositoryImpl.java</url>
           <line>32</line>
           <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/service/impl/UserServiceImpl.java</url>
-          <line>98</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/service/impl/UserServiceImpl.java</url>
-          <line>99</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/service/impl/UserServiceImpl.java</url>
-          <line>100</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/dto/converter/UserConverter.java</url>
-          <line>30</line>
-          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

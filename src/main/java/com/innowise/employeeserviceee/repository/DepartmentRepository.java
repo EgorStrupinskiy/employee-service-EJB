@@ -15,4 +15,6 @@ public interface DepartmentRepository {
     Department findById(Long id);
 
     void deleteById(Long id);
+
+    boolean existsById(Long id);
 }

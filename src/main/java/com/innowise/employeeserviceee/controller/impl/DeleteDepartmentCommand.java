@@ -2,7 +2,6 @@ package com.innowise.employeeserviceee.controller.impl;
 
 import com.innowise.employeeserviceee.controller.Command;
 import com.innowise.employeeserviceee.service.DepartmentService;
-import com.innowise.employeeserviceee.service.EmployeeService;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
 import jakarta.servlet.ServletException;
