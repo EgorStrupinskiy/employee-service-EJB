@@ -2,6 +2,7 @@ package com.innowise.employeeserviceee.service;
 
 
 
+import com.innowise.employeeserviceee.dto.EmployeeDTO;
 import com.innowise.employeeserviceee.dto.UserCard;
 import com.innowise.employeeserviceee.dto.UserDTO;
 import com.innowise.employeeserviceee.entity.User;
@@ -18,5 +19,12 @@ public interface UserService {
     void deleteById(Long id);
     List<UserCard> findAll();
 
+    UserCard findById(Long id);
+
     UserDTO findByUsername(String username) throws UsernameNotFoundException;
+
+    boolean checkCredentials(UserDTO user);
+
+    String generateToken(UserDTO user);
+
 }

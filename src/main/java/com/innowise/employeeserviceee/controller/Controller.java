@@ -1,6 +1,8 @@
 package com.innowise.employeeserviceee.controller;
 
 import jakarta.annotation.security.DeclareRoles;
+import jakarta.annotation.security.PermitAll;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
@@ -24,14 +26,17 @@ public class Controller extends HttpServlet {
     @EJB
     CommandProvider commandProvider;
 
+    @PermitAll
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         processRequest(request, response);
     }
 
+    @RolesAllowed("HR")
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         processRequest(request, response);
     }
 
+    @RolesAllowed("HR")
     public void doDelete(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         processRequest(request, response);
     }
