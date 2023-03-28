@@ -2,6 +2,7 @@ package com.innowise.employeeserviceee.controller.impl;
 
 import com.innowise.employeeserviceee.controller.Command;
 import com.innowise.employeeserviceee.dto.UserDTO;
+import com.innowise.employeeserviceee.exception.UsernameNotFoundException;
 import com.innowise.employeeserviceee.model.RegistrationRequest;
 import com.innowise.employeeserviceee.service.UserService;
 import com.innowise.employeeserviceee.util.JsonConverter;
@@ -21,7 +22,7 @@ public class AddUserCommand implements Command {
     private UserService userService;
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, UsernameNotFoundException {
         RegistrationRequest registrationRequest = JsonConverter.convert(request, RegistrationRequest.class);
         UserDTO actual = userService.addUser(registrationRequest.toDTO());
         response.getWriter().write(JsonConverter.toJson(actual));

@@ -4,8 +4,10 @@ package com.innowise.employeeserviceee.service.impl;
 import com.innowise.employeeserviceee.dto.DepartmentDTO;
 import com.innowise.employeeserviceee.dto.converter.DepartmentConverter;
 import com.innowise.employeeserviceee.entity.Department;
+import com.innowise.employeeserviceee.entity.Employee;
 import com.innowise.employeeserviceee.exception.NoSuchRecordException;
 import com.innowise.employeeserviceee.repository.DepartmentRepository;
+import com.innowise.employeeserviceee.repository.EmployeeRepository;
 import com.innowise.employeeserviceee.service.DepartmentService;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
@@ -13,8 +15,10 @@ import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Stateless
@@ -23,6 +27,8 @@ import java.util.stream.Collectors;
 public class DepartmentServiceImpl implements DepartmentService {
     @EJB
     private DepartmentRepository departmentRepository;
+    @EJB
+    private EmployeeRepository employeeRepository;
     @EJB
     private DepartmentConverter converter;
 
@@ -57,6 +63,7 @@ public class DepartmentServiceImpl implements DepartmentService {
             throw new NoSuchRecordException
                     (String.format("Department with id=%s not found for deleting", id));
         }
+
         departmentRepository.deleteById(id);
     }
 }

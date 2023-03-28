@@ -23,6 +23,8 @@ public class CommandProvider {
     private Command deleteEmployeeByIdCommand;
     @EJB
     private Command findEmployeeByIdCommand;
+    @EJB
+    private Command updateEmployeeCommand;
 
 
     @EJB
@@ -31,6 +33,8 @@ public class CommandProvider {
     private Command addDepartmentCommand;
     @EJB
     private Command deleteDepartmentCommand;
+    @EJB
+    private Command updateDepartmentCommand;
 
     @EJB
     private Command findAllUsersCommand;
@@ -54,6 +58,7 @@ public class CommandProvider {
         innerMap.put("GET", findAllEmployeesCommand);
         innerMap.put("POST", addEmployeeCommand);
         innerMap.put("DELETE", deleteEmployeeByIdCommand);
+        innerMap.put("PUT", updateEmployeeCommand);
         map.put("employees", innerMap);
 
 
@@ -61,6 +66,7 @@ public class CommandProvider {
         innerMap.put("GET", findAllDepartmentsCommand);
         innerMap.put("POST", addDepartmentCommand);
         innerMap.put("DELETE", deleteDepartmentCommand);
+        innerMap.put("PUT", updateDepartmentCommand);
         map.put("departments", innerMap);
 
         innerMap = new HashMap<>();

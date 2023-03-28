@@ -14,7 +14,7 @@ import java.util.List;
 @Local
 public interface UserService {
 //    UserDetails loadUserByUsername(String username);
-    UserDTO addUser(UserDTO user);
+    UserDTO addUser(UserDTO user) throws UsernameNotFoundException;
 
     void deleteById(Long id);
     List<UserCard> findAll();

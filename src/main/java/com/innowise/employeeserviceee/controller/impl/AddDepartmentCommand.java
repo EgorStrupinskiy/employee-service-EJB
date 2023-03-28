@@ -23,7 +23,6 @@ public class AddDepartmentCommand implements Command {
     private DepartmentService departmentService;
 
     @Override
-    @RolesAllowed("HR")
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         DepartmentDTO departmentDTO = JsonConverter.convert(request, DepartmentDTO.class);
         DepartmentDTO actual = departmentService.saveDepartment(departmentDTO);

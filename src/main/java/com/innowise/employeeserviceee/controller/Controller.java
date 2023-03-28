@@ -1,6 +1,8 @@
 package com.innowise.employeeserviceee.controller;
 
+import com.innowise.employeeserviceee.exception.UsernameNotFoundException;
 import jakarta.annotation.security.DeclareRoles;
+import jakarta.annotation.security.DenyAll;
 import jakarta.annotation.security.PermitAll;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.ejb.EJB;
@@ -31,18 +33,25 @@ public class Controller extends HttpServlet {
         processRequest(request, response);
     }
 
-    @RolesAllowed("HR")
+    @PermitAll
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         processRequest(request, response);
     }
 
-    @RolesAllowed("HR")
+    public void doPut(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        processRequest(request, response);
+    }
+
     public void doDelete(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         processRequest(request, response);
     }
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.setContentType("application/json");
-        commandProvider.provideCommand(request).execute(request, response);
+        try {
+            commandProvider.provideCommand(request).execute(request, response);
+        } catch (UsernameNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

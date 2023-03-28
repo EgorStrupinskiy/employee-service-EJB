@@ -6,6 +6,8 @@ import com.innowise.employeeserviceee.dto.converter.EmployeeConverter;
 import com.innowise.employeeserviceee.entity.Employee;
 import com.innowise.employeeserviceee.exception.NoSuchRecordException;
 import com.innowise.employeeserviceee.exception.UsernameNotFoundException;
+import com.innowise.employeeserviceee.repository.AuthorityRepository;
+import com.innowise.employeeserviceee.repository.DepartmentRepository;
 import com.innowise.employeeserviceee.repository.EmployeeRepository;
 import com.innowise.employeeserviceee.repository.impl.EmployeeRepositoryImpl;
 import com.innowise.employeeserviceee.service.EmployeeService;
@@ -25,6 +27,8 @@ import java.util.stream.Collectors;
 public class EmployeeServiceImpl implements EmployeeService {
     @EJB
     private EmployeeRepository employeeRepository;
+    @EJB
+    private DepartmentRepository departmentRepository;
     @EJB
     private EmployeeConverter converter;
 
@@ -55,6 +59,21 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void deleteById(Long id) {
         employeeRepository.deleteById(id);
+    }
+
+    @Override
+    public EmployeeDTO updateEmployee(EmployeeDTO employeeDTO) {
+        Employee existingEmployee = employeeRepository.findById(employeeDTO.getId());
+        if (existingEmployee != null) {
+            existingEmployee.setName(employeeDTO.getName());
+            existingEmployee.setSurname(employeeDTO.getSurname());
+            existingEmployee.setDepartment(departmentRepository.findById(employeeDTO.getDepartmentId()));
+            existingEmployee.setSalary(employeeDTO.getSalary());
+
+            return converter.toDTO(employeeRepository.save(existingEmployee));
+        } else {
+            throw new NoSuchRecordException("There is no employee with id" + employeeDTO.getId());
+        }
     }
 
 

@@ -5,8 +5,8 @@ import com.innowise.employeeserviceee.dto.UserDTO;
 import com.innowise.employeeserviceee.dto.converter.UserCardConverter;
 import com.innowise.employeeserviceee.dto.converter.UserConverter;
 import com.innowise.employeeserviceee.entity.User;
+import com.innowise.employeeserviceee.exception.AlreadyRegisteredException;
 import com.innowise.employeeserviceee.exception.UsernameNotFoundException;
-import com.innowise.employeeserviceee.repository.AuthorityRepository;
 import com.innowise.employeeserviceee.repository.UserRepository;
 import com.innowise.employeeserviceee.security.EncryptService;
 import com.innowise.employeeserviceee.security.TokenService;
@@ -35,8 +35,12 @@ public class UserServiceImpl implements UserService {
     private TokenService jwtTokenService;
 
     @Override
-    public UserDTO addUser(UserDTO userDTO) {
+    public UserDTO addUser(UserDTO userDTO){
         User entityDTO = converter.toEntity(userDTO);
+        if (userRepository.findByUsername(entityDTO.getUsername()) != null) {
+            throw new AlreadyRegisteredException("User with this username already exists");
+        }
+        entityDTO.setPassword(EncryptService.hashPassword(entityDTO.getPassword()));
         User returnedEntity = userRepository.save(entityDTO);
         UserDTO convertedEntity = converter.toDTO(returnedEntity);
         return convertedEntity;

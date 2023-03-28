@@ -1,13 +1,12 @@
 package com.innowise.employeeserviceee.repository.impl;
 
+import com.innowise.employeeserviceee.dto.UserDTO;
+import com.innowise.employeeserviceee.entity.Department;
 import com.innowise.employeeserviceee.entity.Employee;
 import com.innowise.employeeserviceee.entity.User;
 import com.innowise.employeeserviceee.repository.UserRepository;
 import jakarta.ejb.Stateless;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.Query;
-import jakarta.persistence.TypedQuery;
+import jakarta.persistence.*;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -54,8 +53,17 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public User findByUsername(String username) {
         TypedQuery<User> query = entityManager.createQuery("SELECT u FROM User u WHERE u.username = :username", User.class);
-        query.setParameter("username", username);
-        User user = query.getSingleResult();
+        User user = null;
+        try {
+            if (query != null){
+                query.setParameter("username", username);
+                user = query.getSingleResult();
+            }
+        } catch (NoResultException ignored) {
+
+        }
+
         return user;
     }
+
 }

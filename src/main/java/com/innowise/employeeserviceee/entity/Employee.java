@@ -5,15 +5,16 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 
 @Entity
 @Table(name = "employees")
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,10 +29,10 @@ public class Employee {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "department_id")
-    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Department department;
 
     @Column(name = "salary")
     private int salary;
-
 }
+
