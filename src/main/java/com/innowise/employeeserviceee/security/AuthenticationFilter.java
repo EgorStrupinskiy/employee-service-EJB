@@ -23,6 +23,7 @@ import java.util.Set;
 //@Provider
 @Priority(Priorities.AUTHENTICATION)
 @WebFilter("/api/*")
+@Provider
 public class AuthenticationFilter implements Filter {
 
     private static final String REALM = "example";
@@ -33,31 +34,6 @@ public class AuthenticationFilter implements Filter {
 
     @EJB
     private TokenService jwtTokenService;
-
-//    @Override
-//    public void filter(ContainerRequestContext requestContext) {
-//        if (EXCLUDED_PATHS.contains(uriInfo.getPath())) {
-//            return;
-//        }
-//
-//        String authorizationHeader = requestContext.getHeaderString(HttpHeaders.AUTHORIZATION);
-//
-//        if (authorizationHeader == null || !authorizationHeader.startsWith(AUTHENTICATION_SCHEME)) {
-//            abortWithUnauthorized(requestContext);
-//            return;
-//        }
-//
-//        String token = authorizationHeader.substring(AUTHENTICATION_SCHEME.length()).trim();
-//
-//        try {
-//            String principal = jwtTokenService.parseToken(token).getBody().getSubject();
-//            String authority = jwtTokenService.parseToken(token).getBody().get("authority", String.class);
-//            requestContext.setSecurityContext(
-//                    new SecurityContext(principal, requestContext.getSecurityContext().isSecure(), authority));
-//        } catch (Exception e) {
-//            abortWithUnauthorized(requestContext);
-//        }
-//    }
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -76,12 +52,10 @@ public class AuthenticationFilter implements Filter {
         }
 
         String authorizationHeader = httpRequest.getHeader(HttpHeaders.AUTHORIZATION);
-
         if (authorizationHeader == null || !authorizationHeader.startsWith(AUTHENTICATION_SCHEME)) {
             abortWithUnauthorized(httpResponse);
             return;
         }
-
         String token = authorizationHeader.substring(AUTHENTICATION_SCHEME.length()).trim();
 
         try {

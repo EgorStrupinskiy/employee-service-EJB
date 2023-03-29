@@ -5,13 +5,13 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class SecurityContext implements jakarta.ws.rs.core.SecurityContext {
 
+public class JwtSecurityContext implements jakarta.ws.rs.core.SecurityContext {
     private final String username;
     private final boolean isSecure;
     private final List<String> roles;
 
-    public SecurityContext(String username, boolean isSecure, String... roles) {
+    public JwtSecurityContext(String username, boolean isSecure, String... roles) {
         System.out.println("SecurityContext.SecurityContext");
         this.username = username;
         this.isSecure = isSecure;
