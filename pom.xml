@@ -126,6 +126,12 @@
             <scope>runtime</scope>
             <version>0.11.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>4.20.0</version>
+        </dependency>
+
 
 
 
@@ -138,6 +144,8 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.3.2</version>
             </plugin>
+
         </plugins>
+
     </build>
 </project>

@@ -1,0 +1,37 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_authority_table
+      author: your_name
+      changes:
+        - createTable:
+            tableName: authority
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: authority
+                  type: varchar(255)
+                  constraints:
+                    nullable: true
+        - insert:
+            tableName: authority
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 1
+              - column:
+                  name: authority
+                  value: EMPLOYEE
+        - insert:
+            tableName: authority
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 2
+              - column:
+                  name: authority
+                  value: HR

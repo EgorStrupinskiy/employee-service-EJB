@@ -9,13 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a0a0946-c7a4-477c-8617-b046f274fa0d" name="Changes" comment="AuthenticationFilter is working correctly">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/security/JwtSecured.java" afterDir="false" />
+    <list default="true" id="7a0a0946-c7a4-477c-8617-b046f274fa0d" name="Changes" comment="AuthorizationFilter is working correctly">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/db/changelog/01_create_authorities_table.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/controller/impl/FindAllDepartmentsCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/controller/impl/FindAllDepartmentsCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/security/AuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/security/AuthenticationFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/security/AuthorizationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/security/AuthorizationFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/security/SecurityContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/security/JwtSecurityContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,7 +222,7 @@
       <workItem from="1679993136130" duration="21959000" />
       <workItem from="1680073218690" duration="8375000" />
       <workItem from="1680087834853" duration="8734000" />
-      <workItem from="1680121040230" duration="2145000" />
+      <workItem from="1680121040230" duration="3690000" />
     </task>
     <task id="LOCAL-00001" summary="Services and repositories were split into interfaces and implementations">
       <created>1679579308306</created>
@@ -290,7 +287,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680021891312</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="AuthorizationFilter is working correctly">
+      <created>1680123360381</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1680123360381</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -317,7 +321,8 @@
     <MESSAGE value="Some security methods implemented, code beauty improved" />
     <MESSAGE value="Core JWT security implemented" />
     <MESSAGE value="AuthenticationFilter is working correctly" />
-    <option name="LAST_COMMIT_MESSAGE" value="AuthenticationFilter is working correctly" />
+    <MESSAGE value="AuthorizationFilter is working correctly" />
+    <option name="LAST_COMMIT_MESSAGE" value="AuthorizationFilter is working correctly" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -331,21 +336,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/security/AuthenticationFilter.java</url>
           <line>79</line>
           <option name="timeStamp" value="107" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/security/AuthorizationFilter.java</url>
-          <line>64</line>
-          <option name="timeStamp" value="109" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/security/AuthorizationFilter.java</url>
-          <line>66</line>
-          <option name="timeStamp" value="113" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/innowise/employeeserviceee/security/AuthorizationFilter.java</url>
-          <line>53</line>
-          <option name="timeStamp" value="114" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
