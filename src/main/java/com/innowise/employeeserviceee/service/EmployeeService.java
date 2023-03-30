@@ -10,9 +10,11 @@ import java.util.List;
 public interface EmployeeService {
     List<EmployeeDTO> findAll();
 
-    EmployeeDTO saveEmployee(EmployeeDTO employee);
+    EmployeeDTO saveEmployee(EmployeeDTO employeeDTO);
 
     EmployeeDTO findById(Long id);
 
     void deleteById(Long id);
+
+    EmployeeDTO updateEmployee(EmployeeDTO employeeDTO);
 }

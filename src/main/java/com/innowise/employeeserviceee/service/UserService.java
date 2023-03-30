@@ -2,8 +2,11 @@ package com.innowise.employeeserviceee.service;
 
 
 
+import com.innowise.employeeserviceee.dto.EmployeeDTO;
+import com.innowise.employeeserviceee.dto.UserCard;
 import com.innowise.employeeserviceee.dto.UserDTO;
 import com.innowise.employeeserviceee.entity.User;
+import com.innowise.employeeserviceee.exception.UsernameNotFoundException;
 import jakarta.ejb.Local;
 
 import java.util.List;
@@ -11,10 +14,17 @@ import java.util.List;
 @Local
 public interface UserService {
 //    UserDetails loadUserByUsername(String username);
-    UserDTO addUser(UserDTO user);
+    UserDTO addUser(UserDTO user) throws UsernameNotFoundException;
 
     void deleteById(Long id);
-    List<UserDTO> findAll();
+    List<UserCard> findAll();
 
-    UserDTO findByUsername(String username);
+    UserCard findById(Long id);
+
+    UserDTO findByUsername(String username) throws UsernameNotFoundException;
+
+    boolean checkCredentials(UserDTO user);
+
+    String generateToken(UserDTO user);
+
 }

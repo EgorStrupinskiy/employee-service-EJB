@@ -1,7 +1,10 @@
 package com.innowise.employeeserviceee.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +24,10 @@ public class Department {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "department", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    //    @OneToMany(mappedBy = "department", fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.DETACH})
+    @OneToMany(mappedBy = "department", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Employee> employees;
+
 
     public void addEmployee(Employee employee) {
         if (employees == null) {
@@ -32,3 +37,4 @@ public class Department {
         employee.setDepartment(this);
     }
 }
+

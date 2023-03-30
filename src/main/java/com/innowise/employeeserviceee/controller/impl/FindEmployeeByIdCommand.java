@@ -12,10 +12,11 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.Data;
 
 import java.io.IOException;
+import java.util.List;
 
 @Data
 @Stateless
-public class DeleteEmployeeCommand implements Command {
+public class FindEmployeeByIdCommand implements Command {
     @EJB
     private EmployeeService employeeService;
 
@@ -24,8 +25,7 @@ public class DeleteEmployeeCommand implements Command {
         String pathInfo = request.getPathInfo();
         String[] pathParts = pathInfo.split("/");
         Long id = Long.valueOf(pathParts[pathParts.length - 1]);
-        employeeService.deleteById(id);
-
-        response.getWriter().write("Employee with id " + id + " was deleted");
+        EmployeeDTO employeeDTO = employeeService.findById(id);
+        response.getWriter().write(JsonConverter.toJson(employeeDTO));
     }
 }

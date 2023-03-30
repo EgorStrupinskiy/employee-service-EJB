@@ -1,5 +1,6 @@
 package com.innowise.employeeserviceee.repository;
 
+import com.innowise.employeeserviceee.dto.UserDTO;
 import com.innowise.employeeserviceee.entity.User;
 import jakarta.ejb.Local;
 

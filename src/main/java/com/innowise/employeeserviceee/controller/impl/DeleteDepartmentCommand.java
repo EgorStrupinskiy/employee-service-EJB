@@ -2,7 +2,8 @@ package com.innowise.employeeserviceee.controller.impl;
 
 import com.innowise.employeeserviceee.controller.Command;
 import com.innowise.employeeserviceee.service.DepartmentService;
-import com.innowise.employeeserviceee.service.EmployeeService;
+import jakarta.annotation.security.DeclareRoles;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
 import jakarta.servlet.ServletException;
@@ -19,6 +20,7 @@ public class DeleteDepartmentCommand implements Command {
     private DepartmentService departmentService;
 
     @Override
+    @RolesAllowed("HR")
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String pathInfo = request.getPathInfo();
         String[] pathParts = pathInfo.split("/");

@@ -2,10 +2,10 @@ package com.innowise.employeeserviceee.controller.impl;
 
 import com.innowise.employeeserviceee.controller.Command;
 import com.innowise.employeeserviceee.dto.DepartmentDTO;
-import com.innowise.employeeserviceee.dto.EmployeeDTO;
 import com.innowise.employeeserviceee.service.DepartmentService;
-import com.innowise.employeeserviceee.service.EmployeeService;
 import com.innowise.employeeserviceee.util.JsonConverter;
+import jakarta.annotation.security.DeclareRoles;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
 import jakarta.servlet.ServletException;
@@ -17,6 +17,7 @@ import java.io.IOException;
 
 @Data
 @Stateless
+@DeclareRoles({"EMPLOYEE", "HR"})
 public class AddDepartmentCommand implements Command {
     @EJB
     private DepartmentService departmentService;
