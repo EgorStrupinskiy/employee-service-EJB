@@ -2,6 +2,7 @@ package com.innowise.employeeserviceee.controller.impl;
 
 import com.innowise.employeeserviceee.controller.Command;
 import com.innowise.employeeserviceee.dto.UserDTO;
+import com.innowise.employeeserviceee.exception.AuthenticationException;
 import com.innowise.employeeserviceee.security.TokenService;
 import com.innowise.employeeserviceee.service.UserService;
 import com.innowise.employeeserviceee.util.JsonConverter;
@@ -35,7 +36,7 @@ public class LogInCommand implements Command {
             response.setHeader(HttpHeaders.AUTHORIZATION, "Bearer " + token);
             response.getWriter().write("You are logged in");
         } else {
-            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Your credentials are incorrect.");
+            throw new AuthenticationException("Your credentials are incorrect");
         }
     }
 }

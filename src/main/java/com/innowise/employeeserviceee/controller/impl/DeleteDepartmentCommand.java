@@ -20,7 +20,6 @@ public class DeleteDepartmentCommand implements Command {
     private DepartmentService departmentService;
 
     @Override
-    @RolesAllowed("HR")
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String pathInfo = request.getPathInfo();
         String[] pathParts = pathInfo.split("/");

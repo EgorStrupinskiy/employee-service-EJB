@@ -4,6 +4,7 @@ import com.innowise.employeeserviceee.controller.Command;
 import jakarta.ejb.Stateless;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.ws.rs.core.NoContentException;
 import lombok.Data;
 
 import java.io.IOException;
@@ -13,6 +14,7 @@ import java.io.IOException;
 public class WrongCommand implements Command {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.sendError(HttpServletResponse.SC_NOT_FOUND, "Page not found");
+        throw new NoContentException("Page not found");
+//        response.sendError(HttpServletResponse.SC_NOT_FOUND, "Page not found");
     }
 }

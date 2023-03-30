@@ -23,7 +23,6 @@ public class AddEmployeeCommand implements Command {
     @EJB
     private EmployeeService employeeService;
 
-    @RolesAllowed("HR")
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         EmployeeDTO employee = JsonConverter.convert(request, EmployeeDTO.class);

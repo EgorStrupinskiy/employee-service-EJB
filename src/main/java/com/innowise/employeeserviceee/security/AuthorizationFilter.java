@@ -1,5 +1,7 @@
 package com.innowise.employeeserviceee.security;
 
+import com.innowise.employeeserviceee.exception.handler.ExceptionMessage;
+import com.innowise.employeeserviceee.util.JsonConverter;
 import jakarta.ejb.EJB;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
@@ -96,9 +98,12 @@ public class AuthorizationFilter implements Filter {
     }
 
     private void abortWithUnauthorized(HttpServletResponse response) throws IOException {
-        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+        response.setContentType("application/json");
         response.setHeader(HttpHeaders.WWW_AUTHENTICATE, AUTHENTICATION_SCHEME);
         response.getWriter().write("This resource is forbidden for your role.");
+        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+        response.getWriter().write(JsonConverter.toJson(new ExceptionMessage(HttpServletResponse.SC_BAD_REQUEST, "This resource is forbidden for your role.")));
+
     }
 
     @Override

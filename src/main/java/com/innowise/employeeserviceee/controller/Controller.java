@@ -1,10 +1,8 @@
 package com.innowise.employeeserviceee.controller;
 
-import com.innowise.employeeserviceee.exception.UsernameNotFoundException;
+import com.innowise.employeeserviceee.exception.handler.ExceptionHandler;
 import jakarta.annotation.security.DeclareRoles;
-import jakarta.annotation.security.DenyAll;
 import jakarta.annotation.security.PermitAll;
-import jakarta.annotation.security.RolesAllowed;
 import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
@@ -48,6 +46,10 @@ public class Controller extends HttpServlet {
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.setContentType("application/json");
-        commandProvider.provideCommand(request).execute(request, response);
+        try {
+            commandProvider.provideCommand(request).execute(request, response);
+        } catch (Throwable throwable) {
+            ExceptionHandler.handle(throwable, response);
+        }
     }
 }

@@ -1,5 +1,7 @@
 package com.innowise.employeeserviceee.security;
 
+import com.innowise.employeeserviceee.exception.handler.ExceptionMessage;
+import com.innowise.employeeserviceee.util.JsonConverter;
 import io.jsonwebtoken.JwtException;
 import jakarta.annotation.Priority;
 import jakarta.ejb.EJB;
@@ -57,15 +59,16 @@ public class AuthenticationFilter implements Filter {
             httpRequest.getSession().setAttribute("principal", principal);
             httpRequest.getSession().setAttribute("authority", authority);
             chain.doFilter(request, response);
-        } catch (IllegalArgumentException | JwtException | ClassCastException ex) {
+        } catch (Exception e) {
             abortWithUnauthorized(httpResponse);
         }
     }
 
     private void abortWithUnauthorized(HttpServletResponse response) throws IOException {
+        response.setContentType("application/json");
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         response.setHeader(HttpHeaders.WWW_AUTHENTICATE, AUTHENTICATION_SCHEME);
-        response.getWriter().write("Unauthorized");
+        response.getWriter().write(JsonConverter.toJson(new ExceptionMessage(HttpServletResponse.SC_BAD_REQUEST, "Unauthorized")));
     }
 
 
