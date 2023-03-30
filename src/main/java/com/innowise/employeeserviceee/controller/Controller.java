@@ -48,10 +48,6 @@ public class Controller extends HttpServlet {
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.setContentType("application/json");
-        try {
-            commandProvider.provideCommand(request).execute(request, response);
-        } catch (UsernameNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        commandProvider.provideCommand(request).execute(request, response);
     }
 }

@@ -5,11 +5,8 @@ import com.innowise.employeeserviceee.dto.EmployeeDTO;
 import com.innowise.employeeserviceee.dto.converter.EmployeeConverter;
 import com.innowise.employeeserviceee.entity.Employee;
 import com.innowise.employeeserviceee.exception.NoSuchRecordException;
-import com.innowise.employeeserviceee.exception.UsernameNotFoundException;
-import com.innowise.employeeserviceee.repository.AuthorityRepository;
 import com.innowise.employeeserviceee.repository.DepartmentRepository;
 import com.innowise.employeeserviceee.repository.EmployeeRepository;
-import com.innowise.employeeserviceee.repository.impl.EmployeeRepositoryImpl;
 import com.innowise.employeeserviceee.service.EmployeeService;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
@@ -36,7 +33,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Transactional
     public List<EmployeeDTO> findAll() {
         return employeeRepository.findAll().stream().map(converter::toDTO).collect(Collectors.toList());
-
     }
 
     @Override

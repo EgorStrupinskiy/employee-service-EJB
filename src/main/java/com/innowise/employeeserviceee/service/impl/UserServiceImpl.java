@@ -6,7 +6,9 @@ import com.innowise.employeeserviceee.dto.converter.UserCardConverter;
 import com.innowise.employeeserviceee.dto.converter.UserConverter;
 import com.innowise.employeeserviceee.entity.User;
 import com.innowise.employeeserviceee.exception.AlreadyRegisteredException;
+import com.innowise.employeeserviceee.exception.NoSuchRecordException;
 import com.innowise.employeeserviceee.exception.UsernameNotFoundException;
+import com.innowise.employeeserviceee.repository.AuthorityRepository;
 import com.innowise.employeeserviceee.repository.UserRepository;
 import com.innowise.employeeserviceee.security.EncryptService;
 import com.innowise.employeeserviceee.security.TokenService;
@@ -30,6 +32,8 @@ public class UserServiceImpl implements UserService {
     @EJB
     private UserRepository userRepository;
     @EJB
+    private AuthorityRepository authorityRepository;
+    @EJB
     private UserCardConverter userCardConverter;
     @EJB
     private TokenService jwtTokenService;
@@ -39,6 +43,9 @@ public class UserServiceImpl implements UserService {
         User entityDTO = converter.toEntity(userDTO);
         if (userRepository.findByUsername(entityDTO.getUsername()) != null) {
             throw new AlreadyRegisteredException("User with this username already exists");
+        }
+        if (authorityRepository.findById(userDTO.getAuthorityId()) == null) {
+            throw new NoSuchRecordException("There is no authority with id " + userDTO.getAuthorityId());
         }
         entityDTO.setPassword(EncryptService.hashPassword(entityDTO.getPassword()));
         User returnedEntity = userRepository.save(entityDTO);

@@ -4,6 +4,7 @@ import com.innowise.employeeserviceee.dto.DepartmentDTO;
 import com.innowise.employeeserviceee.entity.Department;
 import com.innowise.employeeserviceee.exception.NoSuchRecordException;
 import com.innowise.employeeserviceee.repository.EmployeeRepository;
+import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -15,6 +16,7 @@ import java.util.Optional;
 @NoArgsConstructor
 public class DepartmentConverter {
 
+    @EJB
     private EmployeeRepository employeeRepository;
 
     public Department toEntity(DepartmentDTO departmentDTO) {

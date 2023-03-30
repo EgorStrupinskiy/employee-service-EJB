@@ -27,22 +27,15 @@ public class LogInCommand implements Command {
     UserService userService;
 
     @Override
-    @PermitAll
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         UserDTO userDTO = JsonConverter.convert(request, UserDTO.class);
-//        User user = tokenService.authenticate(
-//                userDTO.getUsername(), userDTO.getPassword());
-//
-//        String token = tokenService.generateToken(user.getUsername(), user.getAuthority());
-//
-//        response.setHeader(HttpHeaders.AUTHORIZATION, "Bearer " + token);
-//        response.getWriter().write("You are logged in");
+
         if (userService.checkCredentials(userDTO)) {
             String token = userService.generateToken(userDTO);
             response.setHeader(HttpHeaders.AUTHORIZATION, "Bearer " + token);
             response.getWriter().write("You are logged in");
         } else {
-            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, Response.Status.UNAUTHORIZED.toString());
+            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Your credentials are incorrect.");
         }
     }
 }

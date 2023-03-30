@@ -1,6 +1,6 @@
 package com.innowise.employeeserviceee.exception;
 
-public class UsernameNotFoundException extends Throwable {
+public class UsernameNotFoundException extends RuntimeException {
     public UsernameNotFoundException() {
         super();
     }

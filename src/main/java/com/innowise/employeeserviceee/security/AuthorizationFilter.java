@@ -1,12 +1,10 @@
 package com.innowise.employeeserviceee.security;
 
-import jakarta.annotation.security.RolesAllowed;
 import jakarta.ejb.EJB;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.ws.rs.container.ResourceInfo;
 import jakarta.ws.rs.core.HttpHeaders;
 import jakarta.ws.rs.ext.Provider;
 
@@ -81,14 +79,6 @@ public class AuthorizationFilter implements Filter {
         }
         abortWithUnauthorized(httpResponse);
     }
-
-    private RolesAllowed getRolesAllowed(ResourceInfo resourceInfo) {
-        if (resourceInfo != null) {
-            return resourceInfo.getResourceMethod().getAnnotation(RolesAllowed.class);
-        }
-        return null;
-    }
-
 
     private boolean performAuthorization(List<String> rolesAllowed, String userRole) {
         if (rolesAllowed.size() == 0 || userRole == null) {
