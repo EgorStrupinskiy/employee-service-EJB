@@ -10,6 +10,7 @@ import com.innowise.employeeserviceee.repository.EmployeeRepository;
 import com.innowise.employeeserviceee.service.EmployeeService;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -46,7 +47,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public EmployeeDTO findById(Long id) {
         Employee employee = employeeRepository.findById(id);
         if (Objects.isNull(employee)) {
-            throw new NoSuchRecordException(String.format("Employee with id=%s not found", id));
+            throw new NoSuchRecordException(HttpServletResponse.SC_BAD_REQUEST, String.format("Employee with id=%s not found", id));
         }
         return converter.toDTO(employee);
     }
@@ -68,7 +69,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
             return converter.toDTO(employeeRepository.save(existingEmployee));
         } else {
-            throw new NoSuchRecordException("There is no employee with id" + employeeDTO.getId());
+            throw new NoSuchRecordException(HttpServletResponse.SC_BAD_REQUEST, "There is no employee with id" + employeeDTO.getId());
         }
     }
 

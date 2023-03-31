@@ -1,15 +1,15 @@
 package com.innowise.employeeserviceee.exception;
 
-public class AuthenticationException extends RuntimeException {
-    public AuthenticationException() {
-        super();
+public class AuthenticationException extends AbstractException {
+    public AuthenticationException(int code) {
+        super(code);
     }
 
-    public AuthenticationException(String message) {
-        super(message);
+    public AuthenticationException(int code, String message) {
+        super(code);
     }
 
-    public AuthenticationException(String message, Throwable cause) {
-        super(message, cause);
+    public AuthenticationException(int code, String message, Throwable cause) {
+        super(code, message, cause);
     }
 }

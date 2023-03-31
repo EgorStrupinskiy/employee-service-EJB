@@ -11,6 +11,7 @@ import com.innowise.employeeserviceee.repository.EmployeeRepository;
 import com.innowise.employeeserviceee.service.DepartmentService;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -51,7 +52,7 @@ public class DepartmentServiceImpl implements DepartmentService {
         Department department = departmentRepository.findById(id);
 
         if (Objects.isNull(department)) {
-            throw new NoSuchRecordException(String.format("Employee with id=%s not found", id));
+            throw new NoSuchRecordException(HttpServletResponse.SC_BAD_REQUEST, String.format("Employee with id=%s not found", id));
         }
         return converter.toDTO(department);
     }
@@ -61,7 +62,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     public void deleteById(Long id) {
         if (!departmentRepository.existsById(id)) {
             throw new NoSuchRecordException
-                    (String.format("Department with id=%s not found for deleting", id));
+                    (HttpServletResponse.SC_BAD_REQUEST, String.format("Department with id=%s not found for deleting", id));
         }
 
         departmentRepository.deleteById(id);

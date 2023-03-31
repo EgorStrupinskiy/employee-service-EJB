@@ -1,17 +1,17 @@
 package com.innowise.employeeserviceee.exception;
 
 
-public class AlreadyRegisteredException extends RuntimeException {
+public class AlreadyRegisteredException extends AbstractException {
 
-    public AlreadyRegisteredException() {
-        super();
+    public AlreadyRegisteredException(int code) {
+        super(code);
     }
 
-    public AlreadyRegisteredException(String message) {
-        super(message);
+    public AlreadyRegisteredException(int code, String message) {
+        super(code);
     }
 
-    public AlreadyRegisteredException(String message, Throwable cause) {
-        super(message, cause);
+    public AlreadyRegisteredException(int code, String message, Throwable cause) {
+        super(code, message, cause);
     }
 }

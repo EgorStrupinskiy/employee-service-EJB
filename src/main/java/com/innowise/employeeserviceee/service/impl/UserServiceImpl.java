@@ -15,6 +15,7 @@ import com.innowise.employeeserviceee.security.TokenService;
 import com.innowise.employeeserviceee.service.UserService;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -42,10 +43,10 @@ public class UserServiceImpl implements UserService {
     public UserDTO addUser(UserDTO userDTO){
         User entityDTO = converter.toEntity(userDTO);
         if (userRepository.findByUsername(entityDTO.getUsername()) != null) {
-            throw new AlreadyRegisteredException("User with this username already exists");
+            throw new AlreadyRegisteredException(HttpServletResponse.SC_BAD_REQUEST, "User with this username already exists");
         }
         if (authorityRepository.findById(userDTO.getAuthorityId()) == null) {
-            throw new NoSuchRecordException("There is no authority with id " + userDTO.getAuthorityId());
+            throw new NoSuchRecordException(HttpServletResponse.SC_BAD_REQUEST, "There is no authority with id " + userDTO.getAuthorityId());
         }
         entityDTO.setPassword(EncryptService.hashPassword(entityDTO.getPassword()));
         User returnedEntity = userRepository.save(entityDTO);
@@ -75,7 +76,7 @@ public class UserServiceImpl implements UserService {
     public UserDTO findByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username);
         if (Objects.isNull(user)) {
-            throw new UsernameNotFoundException(String.format("User %s is not found", username));
+            throw new UsernameNotFoundException(HttpServletResponse.SC_BAD_REQUEST, String.format("User %s is not found", username));
         }
 
         return converter.toDTO(user);

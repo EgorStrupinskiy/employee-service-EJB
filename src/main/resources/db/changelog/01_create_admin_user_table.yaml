@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_user_table
+      author: egor
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 1
+              - column:
+                  name: username
+                  value: admin
+              - column:
+                  name: password
+                  value: $2a$10$PHTe709CeHtniagIEjtyeuMW/Nauzn3/nauSqkUadGJT1MtEvkatS
+              - column:
+                  name: authority_id
+                  valueNumeric: 2

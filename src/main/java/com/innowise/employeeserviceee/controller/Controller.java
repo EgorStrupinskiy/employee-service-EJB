@@ -1,5 +1,6 @@
 package com.innowise.employeeserviceee.controller;
 
+import com.innowise.employeeserviceee.exception.AbstractException;
 import com.innowise.employeeserviceee.exception.handler.ExceptionHandler;
 import jakarta.annotation.security.DeclareRoles;
 import jakarta.annotation.security.PermitAll;
@@ -18,7 +19,6 @@ import java.io.IOException;
 
 @MultipartConfig
 @WebServlet(name = "Controller", urlPatterns = {"/api/*"})
-@DeclareRoles({"EMPLOYEE", "HR"})
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class Controller extends HttpServlet {
@@ -48,8 +48,10 @@ public class Controller extends HttpServlet {
         response.setContentType("application/json");
         try {
             commandProvider.provideCommand(request).execute(request, response);
-        } catch (Throwable throwable) {
-            ExceptionHandler.handle(throwable, response);
+        } catch (AbstractException exception) {
+            ExceptionHandler.handle(exception, response);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 }

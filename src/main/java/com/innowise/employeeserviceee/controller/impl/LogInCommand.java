@@ -36,7 +36,7 @@ public class LogInCommand implements Command {
             response.setHeader(HttpHeaders.AUTHORIZATION, "Bearer " + token);
             response.getWriter().write("You are logged in");
         } else {
-            throw new AuthenticationException("Your credentials are incorrect");
+            throw new AuthenticationException(HttpServletResponse.SC_UNAUTHORIZED, "Your credentials are incorrect");
         }
     }
 }

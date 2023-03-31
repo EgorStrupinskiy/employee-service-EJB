@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/01_create_authorities_table.yaml
+  - include:
+      file: db/changelog/01_create_admin_user_table.yaml
