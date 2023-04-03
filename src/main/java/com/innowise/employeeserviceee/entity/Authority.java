@@ -16,7 +16,7 @@ public class Authority {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @Column(name = "authority")
+    @Column(name = "name")
     private String name;
 
     @OneToMany(mappedBy = "authority", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)

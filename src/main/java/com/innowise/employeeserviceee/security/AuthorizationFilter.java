@@ -1,10 +1,14 @@
 package com.innowise.employeeserviceee.security;
 
+import com.innowise.employeeserviceee.exception.AuthenticationException;
+import com.innowise.employeeserviceee.exception.handler.ExceptionMessage;
+import com.innowise.employeeserviceee.util.JsonConverter;
 import jakarta.ejb.EJB;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.ws.rs.NotAuthorizedException;
 import jakarta.ws.rs.core.HttpHeaders;
 import jakarta.ws.rs.ext.Provider;
 
@@ -30,11 +34,11 @@ public class AuthorizationFilter implements Filter {
         map.put("GET", innerMap);
 
         innerMap = new ArrayList<>();
-        innerMap.add("HR");
+        innerMap.add("ADMIN");
         map.put("POST", innerMap);
 
         innerMap = new ArrayList<>();
-        innerMap.add("HR");
+        innerMap.add("ADMIN");
         map.put("DELETE", innerMap);
     }
 
@@ -51,8 +55,7 @@ public class AuthorizationFilter implements Filter {
 
         String authorizationHeader = httpRequest.getHeader(HttpHeaders.AUTHORIZATION);
         if (authorizationHeader == null || !authorizationHeader.startsWith(AUTHENTICATION_SCHEME)) {
-            abortWithUnauthorized(httpResponse);
-            return;
+            throw new NotAuthorizedException(requestUri);
         }
 
         String token = authorizationHeader.substring(AUTHENTICATION_SCHEME.length()).trim();
@@ -63,24 +66,23 @@ public class AuthorizationFilter implements Filter {
         String methodType = httpRequest.getMethod();
 
         if (!map.containsKey(methodType)) {
-            abortWithUnauthorized(httpResponse);
+            throw new NotAuthorizedException(requestUri);
         }
         List<String> allowedRoles = map.get(methodType);
 
         if (allowedRoles != null) {
             if (allowedRoles.size() == 0) {
-                abortWithUnauthorized(httpResponse);
-                return;
+                throw new NotAuthorizedException(requestUri);
             }
-            if (performAuthorization(allowedRoles, authority)) {
+            if (isAllowed(allowedRoles, authority)) {
                 chain.doFilter(request, response);
                 return;
             }
         }
-        abortWithUnauthorized(httpResponse);
+        throw new NotAuthorizedException(requestUri);
     }
 
-    private boolean performAuthorization(List<String> rolesAllowed, String userRole) {
+    private boolean isAllowed(List<String> rolesAllowed, String userRole) {
         if (rolesAllowed.size() == 0 || userRole == null) {
             return false;
         }
@@ -94,13 +96,6 @@ public class AuthorizationFilter implements Filter {
         }
         return false;
     }
-
-    private void abortWithUnauthorized(HttpServletResponse response) throws IOException {
-        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-        response.setHeader(HttpHeaders.WWW_AUTHENTICATE, AUTHENTICATION_SCHEME);
-        response.getWriter().write("This resource is forbidden for your role.");
-    }
-
     @Override
     public void destroy() {
     }

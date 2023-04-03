@@ -16,12 +16,13 @@ import java.io.IOException;
 @Data
 @Stateless
 public class UpdateEmployeeCommand implements Command {
+
     @EJB
     private EmployeeService employeeService;
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        EmployeeDTO employee = JsonConverter.convert(request, EmployeeDTO.class);
+        EmployeeDTO employee = JsonConverter.toObject(request, EmployeeDTO.class);
         EmployeeDTO actual = employeeService.updateEmployee(employee);
         response.getWriter().write(JsonConverter.toJson(actual));
     }

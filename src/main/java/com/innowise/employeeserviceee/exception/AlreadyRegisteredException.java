@@ -1,17 +1,24 @@
 package com.innowise.employeeserviceee.exception;
 
 
-public class AlreadyRegisteredException extends RuntimeException {
+import jakarta.servlet.http.HttpServletResponse;
 
-    public AlreadyRegisteredException() {
-        super();
+import java.time.LocalTime;
+
+public class AlreadyRegisteredException extends AbstractException {
+
+    private static final int STATUS = HttpServletResponse.SC_BAD_REQUEST;
+    private static final String ERROR = "Bad Request";
+
+    public AlreadyRegisteredException(String path) {
+        super(LocalTime.now(), STATUS, ERROR, path);
     }
 
-    public AlreadyRegisteredException(String message) {
-        super(message);
+    public AlreadyRegisteredException(String path, String message) {
+        super(LocalTime.now(), STATUS, ERROR, path, message);
     }
 
-    public AlreadyRegisteredException(String message, Throwable cause) {
-        super(message, cause);
+    public AlreadyRegisteredException(String path, String message, Throwable cause) {
+        super(LocalTime.now(), STATUS, ERROR, path, message, cause);
     }
 }

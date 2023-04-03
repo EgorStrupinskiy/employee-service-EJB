@@ -17,6 +17,7 @@ import java.util.List;
 @Data
 @Stateless
 public class FindAllUsersCommand implements Command {
+
     @EJB
     private UserService userService;
 

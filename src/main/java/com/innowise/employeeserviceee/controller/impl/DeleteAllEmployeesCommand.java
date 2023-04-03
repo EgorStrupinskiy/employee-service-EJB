@@ -19,9 +19,7 @@ public class DeleteAllEmployeesCommand implements Command {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-
-        employeeService.findAll().forEach(e -> employeeService.deleteById(e.getId()));
-
+        employeeService.deleteAll();
         response.getWriter().write("All employee were deleted");
     }
 }

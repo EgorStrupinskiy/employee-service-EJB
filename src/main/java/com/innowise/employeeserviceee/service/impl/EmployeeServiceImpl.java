@@ -10,6 +10,7 @@ import com.innowise.employeeserviceee.repository.EmployeeRepository;
 import com.innowise.employeeserviceee.service.EmployeeService;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -32,7 +33,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     @Transactional
     public List<EmployeeDTO> findAll() {
-        return employeeRepository.findAll().stream().map(converter::toDTO).collect(Collectors.toList());
+        return employeeRepository.findAll().stream()
+                .map(converter::toDTO)
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -46,7 +49,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public EmployeeDTO findById(Long id) {
         Employee employee = employeeRepository.findById(id);
         if (Objects.isNull(employee)) {
-            throw new NoSuchRecordException(String.format("Employee with id=%s not found", id));
+            throw new NoSuchRecordException("employee/", "There is no employee with id " + id);
         }
         return converter.toDTO(employee);
     }
@@ -55,6 +58,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void deleteById(Long id) {
         employeeRepository.deleteById(id);
+    }
+
+    @Override
+    public void deleteAll() {
+        findAll().forEach(e -> deleteById(e.getId()));
     }
 
     @Override
@@ -68,7 +76,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
             return converter.toDTO(employeeRepository.save(existingEmployee));
         } else {
-            throw new NoSuchRecordException("There is no employee with id" + employeeDTO.getId());
+            throw new NoSuchRecordException("employee/", "There is no employee with id " + employeeDTO.getId());
         }
     }
 

@@ -14,6 +14,8 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+
+//todo return optional instead of raw types. Check for all code smells (inlines)
 @Stateless
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,10 +26,10 @@ public class AuthorityRepositoryImpl implements AuthorityRepository {
     @Override
     public List<Authority> findAll() {
         TypedQuery<Authority> query = entityManager.createQuery("from Authority", Authority.class);
-        List<Authority> list = query.getResultList();
-        return list;
+        return query.getResultList();
     }
 
+    //todo check for the difference between persist and merge
     @Override
     public Authority save(Authority authority) {
         Authority newAuthority = entityManager.merge(authority);
@@ -49,6 +51,8 @@ public class AuthorityRepositoryImpl implements AuthorityRepository {
         query.executeUpdate();
     }
 
+
+    //todo follow single SQL code conventions
     @Override
     public Authority findByName(String name) {
         Query query = entityManager.createQuery("SELECT u FROM Authority u WHERE u.name = :name");

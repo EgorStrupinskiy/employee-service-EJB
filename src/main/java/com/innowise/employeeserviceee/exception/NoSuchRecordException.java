@@ -1,17 +1,23 @@
 package com.innowise.employeeserviceee.exception;
 
 
-public class NoSuchRecordException extends RuntimeException {
+import jakarta.servlet.http.HttpServletResponse;
 
-    public NoSuchRecordException() {
-        super();
+import java.time.LocalTime;
+
+public class NoSuchRecordException extends AbstractException {
+    private static final int STATUS = HttpServletResponse.SC_BAD_REQUEST;
+    private static final String ERROR = "Internal Server Error";
+
+    public NoSuchRecordException(String path) {
+        super(LocalTime.now(), STATUS, ERROR, path);
     }
 
-    public NoSuchRecordException(String message) {
-        super(message);
+    public NoSuchRecordException(String path, String message) {
+        super(LocalTime.now(), STATUS, ERROR, path, message);
     }
 
-    public NoSuchRecordException(String message, Throwable cause) {
-        super(message, cause);
+    public NoSuchRecordException(String path, String message, Throwable cause) {
+        super(LocalTime.now(), STATUS, ERROR, path, message, cause);
     }
 }

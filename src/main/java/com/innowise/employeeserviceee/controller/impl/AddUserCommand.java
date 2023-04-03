@@ -23,7 +23,7 @@ public class AddUserCommand implements Command {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, UsernameNotFoundException {
-        RegistrationRequest registrationRequest = JsonConverter.convert(request, RegistrationRequest.class);
+        RegistrationRequest registrationRequest = JsonConverter.toObject(request, RegistrationRequest.class);
         UserDTO actual = userService.addUser(registrationRequest.toDTO());
         response.getWriter().write(JsonConverter.toJson(actual));
     }

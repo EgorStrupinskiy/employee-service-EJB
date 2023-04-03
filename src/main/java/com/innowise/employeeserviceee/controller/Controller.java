@@ -1,10 +1,10 @@
 package com.innowise.employeeserviceee.controller;
 
-import com.innowise.employeeserviceee.exception.UsernameNotFoundException;
+import com.innowise.employeeserviceee.exception.AbstractException;
+import com.innowise.employeeserviceee.exception.NoSuchRecordException;
+import com.innowise.employeeserviceee.exception.handler.ExceptionHandler;
 import jakarta.annotation.security.DeclareRoles;
-import jakarta.annotation.security.DenyAll;
 import jakarta.annotation.security.PermitAll;
-import jakarta.annotation.security.RolesAllowed;
 import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
@@ -20,7 +20,6 @@ import java.io.IOException;
 
 @MultipartConfig
 @WebServlet(name = "Controller", urlPatterns = {"/api/*"})
-@DeclareRoles({"EMPLOYEE", "HR"})
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class Controller extends HttpServlet {
@@ -48,6 +47,14 @@ public class Controller extends HttpServlet {
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.setContentType("application/json");
-        commandProvider.provideCommand(request).execute(request, response);
+        try {
+            commandProvider.provideCommand(request).execute(request, response);
+        } catch (AbstractException e) {
+            System.out.println("priv");
+            ExceptionHandler.handle(e, response);
+        }
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
     }
 }

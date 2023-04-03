@@ -2,10 +2,8 @@ package com.innowise.employeeserviceee.service;
 
 
 
-import com.innowise.employeeserviceee.dto.EmployeeDTO;
 import com.innowise.employeeserviceee.dto.UserCard;
 import com.innowise.employeeserviceee.dto.UserDTO;
-import com.innowise.employeeserviceee.entity.User;
 import com.innowise.employeeserviceee.exception.UsernameNotFoundException;
 import jakarta.ejb.Local;
 
@@ -23,7 +21,7 @@ public interface UserService {
 
     UserDTO findByUsername(String username) throws UsernameNotFoundException;
 
-    boolean checkCredentials(UserDTO user);
+    boolean isAuthenticated(UserDTO user);
 
     String generateToken(UserDTO user);
 

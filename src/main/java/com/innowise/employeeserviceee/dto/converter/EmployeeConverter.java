@@ -8,6 +8,7 @@ import com.innowise.employeeserviceee.exception.NoSuchRecordException;
 import com.innowise.employeeserviceee.repository.DepartmentRepository;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -30,7 +31,7 @@ public class EmployeeConverter {
         Optional.ofNullable(employeeDTO.getDepartmentId())
                 .ifPresent(id -> {
                             Department department = Optional.ofNullable(departmentRepository.findById(employeeDTO.getDepartmentId()))
-                                    .orElseThrow(() -> new NoSuchRecordException(String.format(String.format("Department with id=%s not found", id))));
+                                    .orElseThrow(() -> new NoSuchRecordException("", "Department with id=%s not found" + id));
                             employee.setDepartment(department);
                         }
                 );
@@ -44,7 +45,7 @@ public class EmployeeConverter {
         Optional.ofNullable(employeeDTO.getDepartmentId())
                 .ifPresent(id -> {
                             Department department = Optional.ofNullable(departmentRepository.findById(employeeDTO.getDepartmentId()))
-                                    .orElseThrow(() -> new NoSuchRecordException(String.format(String.format("Department with id=%s not found", id))));
+                                    .orElseThrow(() -> new NoSuchRecordException("", "Department with id=%s not found" + id));
                             employee.setDepartment(department);
                         }
                 );

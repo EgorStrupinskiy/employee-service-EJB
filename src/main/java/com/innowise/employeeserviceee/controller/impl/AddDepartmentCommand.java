@@ -21,7 +21,7 @@ public class AddDepartmentCommand implements Command {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        DepartmentDTO departmentDTO = JsonConverter.convert(request, DepartmentDTO.class);
+        DepartmentDTO departmentDTO = JsonConverter.toObject(request, DepartmentDTO.class);
         DepartmentDTO actual = departmentService.saveDepartment(departmentDTO);
         response.getWriter().write(JsonConverter.toJson(actual));
     }

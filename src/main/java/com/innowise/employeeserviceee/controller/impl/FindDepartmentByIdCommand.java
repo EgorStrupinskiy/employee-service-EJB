@@ -18,6 +18,7 @@ import java.io.IOException;
 @Data
 @Stateless
 public class FindDepartmentByIdCommand implements Command {
+
     @EJB
     private DepartmentService departmentService;
 
