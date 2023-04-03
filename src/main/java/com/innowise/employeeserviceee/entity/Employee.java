@@ -31,6 +31,8 @@ public class Employee {
     @Column(name = "surname")
     private String surname;
 
+
+    //todo verify cascade
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "department_id")
     @OnDelete(action = OnDeleteAction.CASCADE)

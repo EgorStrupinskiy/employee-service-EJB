@@ -1,5 +1,6 @@
 package com.innowise.employeeserviceee.security;
 
+import com.innowise.employeeserviceee.exception.AuthenticationException;
 import com.innowise.employeeserviceee.exception.handler.ExceptionMessage;
 import com.innowise.employeeserviceee.util.JsonConverter;
 import io.jsonwebtoken.JwtException;
@@ -48,8 +49,7 @@ public class AuthenticationFilter implements Filter {
 
         String authorizationHeader = httpRequest.getHeader(HttpHeaders.AUTHORIZATION);
         if (authorizationHeader == null || !authorizationHeader.startsWith(AUTHENTICATION_SCHEME)) {
-            abortWithUnauthorized(httpResponse);
-            return;
+            throw new AuthenticationException(requestUri);
         }
         String token = authorizationHeader.substring(AUTHENTICATION_SCHEME.length()).trim();
 
@@ -60,17 +60,9 @@ public class AuthenticationFilter implements Filter {
             httpRequest.getSession().setAttribute("authority", authority);
             chain.doFilter(request, response);
         } catch (Exception e) {
-            abortWithUnauthorized(httpResponse);
+            throw new AuthenticationException(requestUri);
         }
     }
-
-    private void abortWithUnauthorized(HttpServletResponse response) throws IOException {
-        response.setContentType("application/json");
-        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-        response.setHeader(HttpHeaders.WWW_AUTHENTICATE, AUTHENTICATION_SCHEME);
-        response.getWriter().write(JsonConverter.toJson(new ExceptionMessage(HttpServletResponse.SC_BAD_REQUEST, "Unauthorized")));
-    }
-
 
     @Override
     public void destroy() {

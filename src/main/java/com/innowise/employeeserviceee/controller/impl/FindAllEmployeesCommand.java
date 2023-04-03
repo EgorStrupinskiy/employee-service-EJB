@@ -18,6 +18,7 @@ import java.util.List;
 @Data
 @Stateless
 public class FindAllEmployeesCommand implements Command {
+
     @EJB
     private EmployeeService employeeService;
 

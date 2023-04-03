@@ -1,5 +1,6 @@
 package com.innowise.employeeserviceee.controller;
 
+import com.innowise.employeeserviceee.exception.NoSuchRecordException;
 import com.innowise.employeeserviceee.exception.UsernameNotFoundException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

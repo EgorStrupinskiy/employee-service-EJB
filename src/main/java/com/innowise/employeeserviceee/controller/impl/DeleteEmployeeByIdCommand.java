@@ -17,6 +17,7 @@ public class DeleteEmployeeByIdCommand implements Command {
     @EJB
     private EmployeeService employeeService;
 
+    //todo same
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String pathInfo = request.getPathInfo();

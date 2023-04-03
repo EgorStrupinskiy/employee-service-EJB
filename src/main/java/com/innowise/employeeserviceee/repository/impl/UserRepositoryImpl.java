@@ -49,16 +49,14 @@ public class UserRepositoryImpl implements UserRepository {
         query.setParameter("userId", id);
         query.executeUpdate();
     }
-
+    //todo: fix findByUsername if it`s possible
     @Override
     public User findByUsername(String username) {
         TypedQuery<User> query = entityManager.createQuery("SELECT u FROM User u WHERE u.username = :username", User.class);
         User user = null;
         try {
-            if (query != null){
-                query.setParameter("username", username);
-                user = query.getSingleResult();
-            }
+            query.setParameter("username", username);
+            user = query.getSingleResult();
         } catch (NoResultException ignored) {
 
         }

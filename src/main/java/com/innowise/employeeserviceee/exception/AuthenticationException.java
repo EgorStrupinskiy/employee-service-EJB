@@ -1,15 +1,24 @@
 package com.innowise.employeeserviceee.exception;
 
+import jakarta.servlet.http.HttpServletResponse;
+
+import java.time.LocalTime;
+
 public class AuthenticationException extends AbstractException {
-    public AuthenticationException(int code) {
-        super(code);
+    private static final int STATUS = HttpServletResponse.SC_BAD_REQUEST;
+    private static final String ERROR = "Bad Request";
+    private static final String MESSAGE = "Error while authentication!";
+
+    public AuthenticationException(String path) {
+        super(LocalTime.now(), STATUS, ERROR, path);
     }
 
-    public AuthenticationException(int code, String message) {
-        super(code);
+    public AuthenticationException(String path, String message) {
+        super(LocalTime.now(), STATUS, ERROR, path, message);
     }
 
-    public AuthenticationException(int code, String message, Throwable cause) {
-        super(code, message, cause);
+    public AuthenticationException(String path, String message, Throwable cause) {
+        super(LocalTime.now(), STATUS, ERROR, path, message, cause);
     }
+
 }

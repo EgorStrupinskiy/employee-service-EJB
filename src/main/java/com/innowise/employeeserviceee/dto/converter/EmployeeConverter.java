@@ -31,7 +31,7 @@ public class EmployeeConverter {
         Optional.ofNullable(employeeDTO.getDepartmentId())
                 .ifPresent(id -> {
                             Department department = Optional.ofNullable(departmentRepository.findById(employeeDTO.getDepartmentId()))
-                                    .orElseThrow(() -> new NoSuchRecordException(HttpServletResponse.SC_BAD_REQUEST, "Department with id=%s not found" + id));
+                                    .orElseThrow(() -> new NoSuchRecordException("", "Department with id=%s not found" + id));
                             employee.setDepartment(department);
                         }
                 );
@@ -45,7 +45,7 @@ public class EmployeeConverter {
         Optional.ofNullable(employeeDTO.getDepartmentId())
                 .ifPresent(id -> {
                             Department department = Optional.ofNullable(departmentRepository.findById(employeeDTO.getDepartmentId()))
-                                    .orElseThrow(() -> new NoSuchRecordException(HttpServletResponse.SC_BAD_REQUEST, "Department with id=%s not found" + id));
+                                    .orElseThrow(() -> new NoSuchRecordException("", "Department with id=%s not found" + id));
                             employee.setDepartment(department);
                         }
                 );

@@ -33,7 +33,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     @Transactional
     public List<EmployeeDTO> findAll() {
-        return employeeRepository.findAll().stream().map(converter::toDTO).collect(Collectors.toList());
+        return employeeRepository.findAll().stream()
+                .map(converter::toDTO)
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -47,7 +49,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public EmployeeDTO findById(Long id) {
         Employee employee = employeeRepository.findById(id);
         if (Objects.isNull(employee)) {
-            throw new NoSuchRecordException(HttpServletResponse.SC_BAD_REQUEST, String.format("Employee with id=%s not found", id));
+            throw new NoSuchRecordException("employee/", "There is no employee with id " + id);
         }
         return converter.toDTO(employee);
     }
@@ -56,6 +58,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void deleteById(Long id) {
         employeeRepository.deleteById(id);
+    }
+
+    @Override
+    public void deleteAll() {
+        findAll().forEach(e -> deleteById(e.getId()));
     }
 
     @Override
@@ -69,7 +76,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
             return converter.toDTO(employeeRepository.save(existingEmployee));
         } else {
-            throw new NoSuchRecordException(HttpServletResponse.SC_BAD_REQUEST, "There is no employee with id" + employeeDTO.getId());
+            throw new NoSuchRecordException("employee/", "There is no employee with id " + employeeDTO.getId());
         }
     }
 

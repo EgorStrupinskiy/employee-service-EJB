@@ -22,6 +22,9 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import static jakarta.servlet.http.HttpServletResponse.SC_BAD_REQUEST;
+import static java.lang.String.format;
+
 @Stateless
 @AllArgsConstructor
 @NoArgsConstructor
@@ -52,17 +55,17 @@ public class DepartmentServiceImpl implements DepartmentService {
         Department department = departmentRepository.findById(id);
 
         if (Objects.isNull(department)) {
-            throw new NoSuchRecordException(HttpServletResponse.SC_BAD_REQUEST, String.format("Employee with id=%s not found", id));
+            throw new NoSuchRecordException("department/", format("Employee with id=%s not found", id));
         }
         return converter.toDTO(department);
     }
 
     @Override
     @Transactional
-    public void deleteById(Long id) {
+    public void deleteById(Long id)  {
         if (!departmentRepository.existsById(id)) {
             throw new NoSuchRecordException
-                    (HttpServletResponse.SC_BAD_REQUEST, String.format("Department with id=%s not found for deleting", id));
+                    ("department/", format("Department with id=%s not found for deleting", id));
         }
 
         departmentRepository.deleteById(id);

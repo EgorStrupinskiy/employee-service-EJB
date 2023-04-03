@@ -1,6 +1,7 @@
 package com.innowise.employeeserviceee.controller.impl;
 
 import com.innowise.employeeserviceee.controller.Command;
+import com.innowise.employeeserviceee.exception.NoSuchRecordException;
 import com.innowise.employeeserviceee.service.DepartmentService;
 import jakarta.annotation.security.DeclareRoles;
 import jakarta.annotation.security.RolesAllowed;
@@ -19,6 +20,7 @@ public class DeleteDepartmentCommand implements Command {
     @EJB
     private DepartmentService departmentService;
 
+    //todo: move to utility class with exception handling
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String pathInfo = request.getPathInfo();
@@ -27,5 +29,10 @@ public class DeleteDepartmentCommand implements Command {
         departmentService.deleteById(id);
 
         response.getWriter().write("Department with id " + id + " was deleted");
+    }
+
+    private String extractRequestParam(final String uri) {
+        final var start = uri.lastIndexOf('/') - 1;
+        return uri.substring(start);
     }
 }

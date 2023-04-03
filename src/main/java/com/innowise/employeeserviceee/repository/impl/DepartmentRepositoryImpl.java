@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-
+//todo for all repos rewrite raw type return value to optional approach
 @Stateless
 @NoArgsConstructor
 @AllArgsConstructor
@@ -34,8 +34,7 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
 
     @Override
     public Department findById(Long id) {
-        Department department = entityManager.find(Department.class, id);
-        return department;
+        return entityManager.find(Department.class, id);
     }
 
     @Override
@@ -48,7 +47,6 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
 
     @Override
     public boolean existsById(Long id) {
-        Department department = entityManager.find(Department.class, id);
-        return department != null;
+        return entityManager.find(Department.class, id) != null;
     }
 }

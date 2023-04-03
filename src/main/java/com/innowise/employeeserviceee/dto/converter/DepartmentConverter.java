@@ -28,7 +28,7 @@ public class DepartmentConverter {
         Optional.ofNullable(departmentDTO.getEmployeeIds())
                 .ifPresent(employeeIds -> employeeIds.forEach(id -> department.addEmployee(Optional.ofNullable(employeeRepository.findById(id))
                             .orElseThrow(() -> new NoSuchRecordException
-                                    (HttpServletResponse.SC_BAD_REQUEST, String.format("Employee with id=%s not found", id)))
+                                    ("", String.format("Employee with id=%s not found", id)))
                 )));
 
         return department;

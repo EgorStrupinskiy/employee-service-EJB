@@ -22,6 +22,7 @@ public class FindUserByIdCommand implements Command {
     @EJB
     private UserService userService;
 
+    //todo same
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String pathInfo = request.getPathInfo();

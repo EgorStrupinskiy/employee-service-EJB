@@ -19,6 +19,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.val;
 
 import java.util.List;
 import java.util.Objects;
@@ -43,15 +44,14 @@ public class UserServiceImpl implements UserService {
     public UserDTO addUser(UserDTO userDTO){
         User entityDTO = converter.toEntity(userDTO);
         if (userRepository.findByUsername(entityDTO.getUsername()) != null) {
-            throw new AlreadyRegisteredException(HttpServletResponse.SC_BAD_REQUEST, "User with this username already exists");
+            throw new AlreadyRegisteredException("user/", "User with this username already exists");
         }
         if (authorityRepository.findById(userDTO.getAuthorityId()) == null) {
-            throw new NoSuchRecordException(HttpServletResponse.SC_BAD_REQUEST, "There is no authority with id " + userDTO.getAuthorityId());
+            throw new NoSuchRecordException("user/", "There is no authority with id " + userDTO.getAuthorityId());
         }
         entityDTO.setPassword(EncryptService.hashPassword(entityDTO.getPassword()));
         User returnedEntity = userRepository.save(entityDTO);
-        UserDTO convertedEntity = converter.toDTO(returnedEntity);
-        return convertedEntity;
+        return converter.toDTO(returnedEntity);
     }
 
     @Override
@@ -76,14 +76,14 @@ public class UserServiceImpl implements UserService {
     public UserDTO findByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username);
         if (Objects.isNull(user)) {
-            throw new UsernameNotFoundException(HttpServletResponse.SC_BAD_REQUEST, String.format("User %s is not found", username));
+            throw new UsernameNotFoundException("user/", String.format("User %s is not found", username));
         }
 
         return converter.toDTO(user);
     }
 
     @Override
-    public boolean checkCredentials(UserDTO userDTO) {
+    public boolean isAuthenticated(UserDTO userDTO) {
         User user = userRepository.findByUsername(userDTO.getUsername());
         return user != null && EncryptService.checkPassword(userDTO.getPassword(), user.getPassword());
     }

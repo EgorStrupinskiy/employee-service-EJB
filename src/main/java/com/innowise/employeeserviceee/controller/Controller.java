@@ -1,6 +1,7 @@
 package com.innowise.employeeserviceee.controller;
 
 import com.innowise.employeeserviceee.exception.AbstractException;
+import com.innowise.employeeserviceee.exception.NoSuchRecordException;
 import com.innowise.employeeserviceee.exception.handler.ExceptionHandler;
 import jakarta.annotation.security.DeclareRoles;
 import jakarta.annotation.security.PermitAll;
@@ -48,10 +49,12 @@ public class Controller extends HttpServlet {
         response.setContentType("application/json");
         try {
             commandProvider.provideCommand(request).execute(request, response);
-        } catch (AbstractException exception) {
-            ExceptionHandler.handle(exception, response);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        } catch (AbstractException e) {
+            System.out.println("priv");
+            ExceptionHandler.handle(e, response);
         }
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
     }
 }

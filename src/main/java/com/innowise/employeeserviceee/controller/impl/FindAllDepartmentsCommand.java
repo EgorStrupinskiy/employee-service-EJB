@@ -18,13 +18,13 @@ import java.util.List;
 @Data
 @Stateless
 public class FindAllDepartmentsCommand implements Command {
+
     @EJB
     private DepartmentService departmentService;
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         List<DepartmentDTO> allDepartments = departmentService.findAll();
-
         response.getWriter().write(JsonConverter.toJson(allDepartments));
     }
 }

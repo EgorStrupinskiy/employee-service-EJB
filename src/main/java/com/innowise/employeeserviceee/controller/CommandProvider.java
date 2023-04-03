@@ -87,6 +87,7 @@ public class CommandProvider {
         map.put("login", innerMap);
     }
 
+    //todo move to the url utils
     public Command provideCommand(HttpServletRequest request) {
         String path = request.getRequestURI();
         String[] pathParts = path.split(COMMAND_SEPARATOR);

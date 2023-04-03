@@ -1,17 +1,25 @@
 package com.innowise.employeeserviceee.exception;
 
 
+import jakarta.servlet.http.HttpServletResponse;
+
+import java.time.LocalTime;
+
 public class NoSuchCommandException extends AbstractException {
 
-    public NoSuchCommandException(int code) {
-        super(code);
+    private static final int STATUS = HttpServletResponse.SC_NOT_FOUND;
+    private static final String ERROR = "Not Found";
+    private static final String MESSAGE = "No command with this name!";
+
+    public NoSuchCommandException(String path) {
+        super(LocalTime.now(), STATUS, ERROR, path);
     }
 
-    public NoSuchCommandException(int code, String message) {
-        super(code);
+    public NoSuchCommandException(String path, String message) {
+        super(LocalTime.now(), STATUS, ERROR, path, message);
     }
 
-    public NoSuchCommandException(int code, String message, Throwable cause) {
-        super(code, message, cause);
+    public NoSuchCommandException(String path, String message, Throwable cause) {
+        super(LocalTime.now(), STATUS, ERROR, path, message, cause);
     }
 }
