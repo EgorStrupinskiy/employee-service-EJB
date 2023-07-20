@@ -1,22 +1,8 @@
 databaseChangeLog:
   - changeSet:
       id: create_authority_table
-      author: your_name
+      author: egor
       changes:
-        - createTable:
-            tableName: authority
-            columns:
-              - column:
-                  name: id
-                  type: bigint
-                  autoIncrement: true
-                  constraints:
-                    primaryKey: true
-              - column:
-                  name: authority
-                  type: varchar(255)
-                  constraints:
-                    nullable: true
         - insert:
             tableName: authority
             columns:
@@ -24,7 +10,7 @@ databaseChangeLog:
                   name: id
                   valueNumeric: 1
               - column:
-                  name: authority
+                  name: name
                   value: EMPLOYEE
         - insert:
             tableName: authority
@@ -33,5 +19,5 @@ databaseChangeLog:
                   name: id
                   valueNumeric: 2
               - column:
-                  name: authority
-                  value: HR
+                  name: name
+                  value: ADMIN
