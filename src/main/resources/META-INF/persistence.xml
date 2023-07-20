@@ -6,14 +6,14 @@
 
     <persistence-unit name="EmployeeServicePersistenceProvider" transaction-type="JTA">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <jta-data-source>jdbc/my_db</jta-data-source>
+        <jta-data-source>jdbc/employee_service_db</jta-data-source>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
 
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
             <property name="hibernate.connection.password" value="bestuser"/>
             <property name="hibernate.connection.username" value="bestuser"/>
-            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/my_db?useSSL=false"/>
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/employee_service_db?useSSL=false"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
         </properties>
     </persistence-unit>
